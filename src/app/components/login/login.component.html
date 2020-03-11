@@ -1,0 +1,28 @@
+<p>Login component</p>
+
+<div class="form-container">
+    <form #LoginForm="ngForm" (ngSubmit)="onSubmit(LoginForm)">
+        <p>
+            <label for="email">
+                Email
+            </label>
+            <input type="email" name="email" [(ngModel)]="user.email" required >
+            <span>El campo es obligatorio</span>
+    
+        </p>
+        <p>
+            <label for="password">
+                Password
+            </label>
+            <input type="password" name="password" [(ngModel)]="user.password" required minlength="8"> 
+            <span>El campo es obligatorio</span>
+    
+        </p>
+        <p>
+            <input type="submit" value="Log in" [disabled]='!LoginForm.valid'>
+                
+        </p>
+    </form>
+    
+</div>
+

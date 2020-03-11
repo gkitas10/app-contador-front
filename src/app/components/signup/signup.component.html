@@ -1,0 +1,25 @@
+<h1>Sign up</h1>
+
+<form #SignupForm="ngForm" (ngSubmit)="onSubmit(SignupForm)">
+    <p>
+        <label>Nombre</label>
+        <input type="text" name="name" required [(ngModel)]="user.name">
+    </p>
+    <p>
+        <label>Email</label>
+        <input type="email" name="email" required [(ngModel)]="user.email">
+    </p>
+    <p>
+        <label>Password</label>
+        <input type="password" name="password" required [(ngModel)]="user.password">
+    </p>
+    <p>
+        <label>Imagen</label>
+        <input type="file" name="img" ngModel>
+    </p>
+    <input type="submit" value="Sign up" [disabled]="!SignupForm.form.valid">
+    
+</form>
+
+
+

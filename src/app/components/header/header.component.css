@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+#navbar{
+
+    background: saddlebrown;
+    height: 80px;
+    width: 100%;
+    padding: 30px;
+}
+
+li{
+    display: inline;
+    
+    
+   
+}
+a{
+    color: white;
+    font-size: 15px;
+    font-family: Helvetica,Arial;
+    margin-left: 25px;
+    
+}

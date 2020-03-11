@@ -1,0 +1,19 @@
+<h1>Ingresa tus tickets de compra</h1>
+
+<div class="form-container">
+    <form #TicketForm="ngForm" (ngSubmit)="onSubmit(TicketForm)">
+    <p>
+        <label>Cantidad</label>
+        <input type="text" name="amount" [(ngModel)]="ticket.amount" required>
+    </p>
+    <p>
+        <label>Concepto</label>
+        <input type="text" name="concept" [(ngModel)]="ticket.concept" required>
+    </p>
+    <p>
+        <label>Fecha</label>
+        <input type="date" name="date" [(ngModel)]="ticket.date" required>
+    </p>
+    <input type="submit" value="Guardar" [disabled]='!TicketForm.valid'>
+</form>
+</div>
