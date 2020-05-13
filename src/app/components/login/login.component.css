@@ -1,0 +1,27 @@
+.component-container{
+    background-color: white;
+    width: 500px;
+    height: 260px;
+    margin:0px auto;
+    border-radius: 10px 10px 10px 10px;
+}
+.form-container{
+
+border: 1px solid black;
+text-align: center;
+height: 100%;
+
+}
+form{
+    width: 100%;
+    
+}
+
+.text-input {
+    width: 80%;
+
+}
+label{
+    display: block;
+    margin-right: 90%;
+}

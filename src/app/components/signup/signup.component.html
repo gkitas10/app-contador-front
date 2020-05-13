@@ -1,17 +1,17 @@
 <h1>Sign up</h1>
-
+<div class="errorBox" *ngIf="error"><p>{{error}}</p></div>
 <form #SignupForm="ngForm" (ngSubmit)="onSubmit(SignupForm)">
     <p>
         <label>Nombre</label>
-        <input type="text" name="name" required [(ngModel)]="user.name">
+        <input type="text" name="name" required ngModel>
     </p>
     <p>
         <label>Email</label>
-        <input type="email" name="email" required [(ngModel)]="user.email">
+        <input type="email" name="email" required ngModel>
     </p>
     <p>
         <label>Password</label>
-        <input type="password" name="password" required [(ngModel)]="user.password">
+        <input type="password" name="password" required ngModel>
     </p>
     <p>
         <label>Imagen</label>

@@ -14,15 +14,13 @@
 }
 
 li{
-    display: inline;
-    
-    
-   
+    display: inline; 
 }
 a{
     color: white;
     font-size: 15px;
     font-family: Helvetica,Arial;
     margin-left: 25px;
+    cursor: pointer;
     
 }

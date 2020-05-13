@@ -16,16 +16,18 @@ export class TicketComponent implements OnInit {
 
   constructor(
     private _ticketService:TicketService,
-    ) { 
-      this.ticket=new Ticket('','','',new Date());
-    }
+    ) { }
 
   ngOnInit() {
     
   }
   onSubmit(form:NgForm){
 
-    this._ticketService.saveTicket(this.ticket).subscribe(
+    this._ticketService.saveTicket(
+      form.value.amount,
+      form.value.concept,
+      form.value.date
+      ).subscribe(
       res=>{console.log(res);
     },
     error=>{console.log(error);

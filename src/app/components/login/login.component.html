@@ -1,21 +1,22 @@
-<p>Login component</p>
+<div class="component-container">
 
 <div class="form-container">
+    <h2 class="form-title">Log in</h2>
     <form #LoginForm="ngForm" (ngSubmit)="onSubmit(LoginForm)">
         <p>
             <label for="email">
                 Email
             </label>
-            <input type="email" name="email" [(ngModel)]="user.email" required >
-            <span>El campo es obligatorio</span>
+            <input class="text-input" type="email" name="email" ngModel required >
+            <!--<span>El campo es obligatorio</span>-->
     
         </p>
         <p>
             <label for="password">
                 Password
             </label>
-            <input type="password" name="password" [(ngModel)]="user.password" required minlength="8"> 
-            <span>El campo es obligatorio</span>
+            <input class="text-input" type="password" name="password" ngModel required minlength="8"> 
+           <!--<span>El campo es obligatorio</span>-->
     
         </p>
         <p>
@@ -24,5 +25,6 @@
         </p>
     </form>
     
+</div>
 </div>
 

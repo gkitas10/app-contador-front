@@ -1,12 +1,12 @@
-
 <nav id="navbar">
-    <ul>
-        <li><a [routerLink]="['login']">Log in</a></li>
-        <li><a [routerLink]="['signup']">Sign up</a></li>
-        <li><a [routerLink]="['income-statement']">Estado de resultados</a></li>
-    </ul>
-    
-       
-    
+    <div>
+        <ul>
+            <li routerLinkActive="active" *ngIf="!isLoggedIn"><a [routerLink]="['login']">Log in</a></li>
+            <li routerLinkActive="active" *ngIf="!isLoggedIn"><a [routerLink]="['signup']">Sign up</a></li>
+            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']" >Estado de resultados</a></li>
+            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['tickets']">Tickets</a></li>
+            <li *ngIf="isLoggedIn"><a (click)="onLogout()">Log out</a></li>
+        </ul>
+    </div>  
 </nav>
-<router-outlet></router-outlet>
+

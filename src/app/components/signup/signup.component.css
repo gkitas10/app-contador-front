@@ -1,3 +1,10 @@
 h1{
     color: red;
 }
+
+.errorBox{
+    background-color: rgb(255,25,25);
+    height: 25px;
+    width: 250px;
+    color:white;
+}

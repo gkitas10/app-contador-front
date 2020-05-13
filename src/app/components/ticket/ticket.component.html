@@ -4,15 +4,15 @@
     <form #TicketForm="ngForm" (ngSubmit)="onSubmit(TicketForm)">
     <p>
         <label>Cantidad</label>
-        <input type="text" name="amount" [(ngModel)]="ticket.amount" required>
+        <input type="text" name="amount" ngModel required>
     </p>
     <p>
         <label>Concepto</label>
-        <input type="text" name="concept" [(ngModel)]="ticket.concept" required>
+        <input type="text" name="concept" ngModel required>
     </p>
     <p>
         <label>Fecha</label>
-        <input type="date" name="date" [(ngModel)]="ticket.date" required>
+        <input type="date" name="date" ngModel required>
     </p>
     <input type="submit" value="Guardar" [disabled]='!TicketForm.valid'>
 </form>
