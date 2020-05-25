@@ -11,12 +11,17 @@ import { NgForm } from "@angular/forms";
 export class IncomeStatementComponent implements OnInit {
   public tickets: any[];
   public filteredArray: any[];
+  public dataGraph:any[];
   public total:number;
   public date:string;
   public month:string;
   public year:number;
+  public error:boolean;
+  
 
-  constructor(private _ticketService: TicketService) {}
+  constructor(private _ticketService: TicketService) {
+    this.error=false;
+  }
 
   ngOnInit() {
     this._ticketService.getTickets().subscribe(
@@ -37,9 +42,19 @@ export class IncomeStatementComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    let filteredArray=this._ticketService.filterTickets(form,this.tickets)
-    this.filteredArray=filteredArray;
-
+    if(!form.value.date && !form.value.month &&
+      !form.value.year && form.value.concept===''){
+        this.error=true;
+        return;
+      }
+    this.error=false;
+    let combinedArr=this._ticketService.filterTickets(form,this.tickets)
+    this.filteredArray=combinedArr[0];
+    this.dataGraph=combinedArr[1];
+    console.log(combinedArr);
     this.getTotal();
+    
   }
+
+  
 }

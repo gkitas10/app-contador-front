@@ -13,11 +13,14 @@
     <input *ngIf="!date && !month" class="text-input" type="number" name="year" [(ngModel)]="year">
     <input class="submit-btn" type="submit" value="Get information">
     
+    <div *ngIf="error">Es necesario llenar por lo menos un campo</div>
 </form>
 
+
 </div>
-<div class="graph-container">
-    <app-graph></app-graph>
+<div class="graph-container" >
+    
+    <app-graph [dataGraph]="dataGraph" *ngIf="dataGraph"></app-graph>
 </div>
     
 

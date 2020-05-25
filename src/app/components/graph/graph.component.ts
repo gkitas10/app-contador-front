@@ -1,35 +1,45 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Chart} from 'chart.js';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { TicketService } from 'src/app/services/ticket.service';
-import {Subscription } from "rxjs";
+
 
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.css']
 })
-export class GraphComponent implements OnInit, OnDestroy{
-  public lineChartData:Array<any>
-  private dataSubs:Subscription;
-  public dataObj:{data:Array<number>,label:string};
+export class GraphComponent implements OnInit, OnChanges{
+  public lineChartData:Array<any>;
+  public lineChartLabels:Array<string>;
+  public lineChartOptions:any;
+  public lineChartColors:Array<any>;
+  public lineChartLegend:boolean;
+  public lineChartType:string;
+  @Input() dataGraph:Array<any>;
 
-  constructor(private _ticketService:TicketService) { }
+  constructor(private _ticketService:TicketService) { 
+    this.lineChartOptions={responsive:true},
+    this.lineChartColors=[{
+      backgroundColor:'rgba(148,159,177,0.2)',
+      borderColor:'rgba(148,159,177,1)',
+      pointBackgroundColor:'rgba(148,159,177,1)',
+      pointBorderColor:'#fff',
+      pointHoverBackgroundColor:'#fff',
+      pointHoverBorderColor:'rgba(148,159,177,0.8)'
+    }],
+    this.lineChartLegend=true,
+    this.lineChartType='line'
+
+  }
 
   ngOnInit() {
-    this.dataSubs=this._ticketService.dataObj.subscribe(
-      res=>{this.dataObj=res;
-      console.log(this.dataObj)
-      },
-      error=>{
-        console.log(error)
-      }
-    )
-    console.log('despues de subs')
+   
    
   }
 
-  ngOnDestroy(){
-    this.dataSubs.unsubscribe();
+  ngOnChanges(){
+    this.lineChartData=[this.dataGraph[0]];
+    this.lineChartLabels=this.dataGraph[1];
+    console.log('onchanges ejecutado')
   }
 
 }
