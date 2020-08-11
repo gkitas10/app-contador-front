@@ -1,0 +1,19 @@
+<div class="main-container">
+    <div class="sidebar">
+        <form class="form" #Form="ngForm" (ngSubmit)="onSubmit(Form)">
+            <label>Período </label>
+            <input type="month" class="main-container__month" ngModel name="month" required>
+            <input type="submit" [disabled]='!Form.valid'>
+        </form>
+    </div>
+    <div class="table-container">
+        <div class="error" *ngIf="error">{{error}}</div>
+        
+            <div class="table-container" *ngFor="let ticket of totalsArray">
+                <div>
+                    {{ticket.concept}}     {{ticket.amount}}
+                </div>
+                
+            </div>     
+    </div>
+</div>

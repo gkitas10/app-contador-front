@@ -27,6 +27,7 @@ export class IncomeStatementComponent implements OnInit {
     this._ticketService.getTickets().subscribe(
       (res) => {
         this.tickets = res.tickets;
+        console.log(this.tickets)
         
       },
       (error) => {

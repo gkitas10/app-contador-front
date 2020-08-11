@@ -21,11 +21,13 @@ export class TicketComponent implements OnInit {
   ngOnInit() {
     
   }
-  onSubmit(form:NgForm){
 
+  onSubmit(form:NgForm){
     this._ticketService.saveTicket(
       form.value.amount,
       form.value.concept,
+      form.value.product,
+      form.value.provider,
       form.value.date
       ).subscribe(
       res=>{console.log(res);

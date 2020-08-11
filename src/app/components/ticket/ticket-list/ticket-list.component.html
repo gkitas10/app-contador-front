@@ -1,0 +1,39 @@
+<div class="sidebar">
+    <form #TicketListForm="ngForm" class="form" (ngSubmit)="onSubmit(TicketListForm)">
+        <div class="form__group">
+            <label>Categoría</label>
+            <input type="text" name="concept" ngModel>
+        </div>
+        <div class="form__group" >
+            <label>Producto o servicio</label>
+            <input type="text" name="product" ngModel>
+        </div>
+        <div class="form__group">
+            <label>Proveedor o Tienda</label>
+            <input type="text" class="form__input" name="provider" ngModel>
+        </div>
+        <div class="form__group">
+            <label>Fecha</label>
+            <input type="date" name="date" ngModel>
+        </div>
+        <div class="form__group">
+            <label>Mes</label>
+            <input type="month" name="month" ngModel>
+        </div>
+        <div class="form__group">
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+</div>
+<div class="tickets-container">
+    <app-ticket-item
+    *ngFor='let ticket of tickets'
+    [ticket]='ticket'
+    ></app-ticket-item>
+    <div class="pages" *ngIf="tickets">
+        Se encontraron {{count}} resultados
+        <button *ngIf="from>=12" (click)=previousPage(TicketListForm)>Página anterior</button>
+        <button *ngIf="count-from>12" (click)=nextPage(TicketListForm)>Página siguiente</button>
+        <div>Página 2 de 3</div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+:host{
+    margin:1px solid black;
+    display: flex;
+    
+}
+
+.sidebar{
+    background-color:white;
+    width: 20%;
+    display: flex;
+}
+
+.form > *{
+    font-family: sans-serif;
+    line-height: 1.5;
+    
+}
+
+.form__group{
+    display: flex;
+    flex-direction: column;
+}
+
+.tickets-container{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(min-content,1fr));
+    grid-template-rows: 300px 300px 300px 300px 150px;
+    background-color: rgb(64, 74, 83);
+    flex-grow: 1;
+    grid-auto-flow:column;
+    
+}
+
+.pages{
+    grid-column: 1/4;
+    grid-row:5/6;
+    background-color: white;
+}
+

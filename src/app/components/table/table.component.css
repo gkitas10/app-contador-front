@@ -1,0 +1,20 @@
+:host{
+    display:flex;
+    height: 600px;
+}
+
+.main-container{
+    width: 100%;
+    display: flex;
+}
+
+.table-container{
+    border: 1px solid black;
+    width: 50%;
+}
+
+.sidebar{
+    background-color: gray;
+    width: 20%;
+}
+

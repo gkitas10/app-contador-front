@@ -14,6 +14,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { IncomeStatementComponent } from './components/income-statement/income-statement.component';
 import {AuthInterceptorService} from './components/interceptors/auth-interceptor.service';
 import { GraphComponent } from './components/graph/graph.component';
+import { TableComponent } from './components/table/table.component';
+import { TicketListComponent } from './components/ticket/ticket-list/ticket-list.component';
+import { TicketItemComponent } from './components/ticket/ticket-item/ticket-item.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { GraphComponent } from './components/graph/graph.component';
     TicketComponent,
     HeaderComponent,
     IncomeStatementComponent,
-    GraphComponent
+    GraphComponent,
+    TableComponent,
+    TicketListComponent,
+    TicketItemComponent
   ],
   imports: [
     BrowserModule,

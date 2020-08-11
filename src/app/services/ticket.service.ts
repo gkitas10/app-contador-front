@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Global } from "./Global";
 import { Ticket } from "../models/ticket";
-import { Observable,BehaviorSubject } from "rxjs";
+import { Observable} from "rxjs";
 import { catchError, exhaustMap, take } from "rxjs/operators";
 import { throwError } from "rxjs";
 import { UserService } from "./user.service";
@@ -14,16 +14,20 @@ import { NgForm } from "@angular/forms";
 export class TicketService {
   public url: String;
   public ticket: Ticket;
-  //public dataGraph = new BehaviorSubject <any> (null);
+  
 
   constructor(private _http: HttpClient, private _userService: UserService) {
     this.url = Global.url;
   }
 
-  saveTicket(amount: number, concept: string, date: Date): Observable<any> {
+  saveTicket(
+    amount: number, concept: string, product:string, provider:string, date: Date
+    ): Observable<any> {
     let body = {
       amount,
       concept,
+      product,
+      provider,
       date,
     };
 
@@ -42,12 +46,28 @@ export class TicketService {
   }
 
   getTickets(): Observable<any> {
-    return this._userService.user.pipe(
-      take(1),
+       return this._userService.user.pipe(
+     // take(1),
       exhaustMap((user) => {
         return this._http.get(this.url + "get-tickets/" + user.id);
       })
     );
+  }
+
+  getTicketItems(
+    concept?:string,
+    product?:string,
+    provider?:string,
+    date?:string,
+    month?:string,
+    from?:number
+    ):Observable<any>{
+    const body={concept,product,provider,date,month}
+    return this._userService.user.pipe(
+      exhaustMap((user)=>{
+        return this._http.post(`${this.url}ticket-items/${user.id}/?from=${from}`,body);
+      })
+    )
   }
 //Funcion principal que devuelve lo que proviene de las funciones filtradoras de abajo
 //y que alimenta el onsubmit de incomestatement
