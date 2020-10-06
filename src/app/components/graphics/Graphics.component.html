@@ -1,0 +1,32 @@
+<div class="form-container">
+    <form #expensesForm="ngForm" (ngSubmit)="onSubmit(expensesForm)">
+        <div class="total" *ngIf="total">Total:$ {{total}}</div>
+        <div class='form-group'>
+            <label class="label">Concept</label>
+            <input  class="text-input" name="concept" type="text" ngModel>
+        </div>
+        <div class='form-group'>
+            <label class="label" *ngIf="!month && !year">Date</label>
+            <input *ngIf="!month && !year" class="text-input" type="date" name="date" [(ngModel)]="date">
+        </div>
+        <div class='form-group'>
+            <label class="label" *ngIf="!date && !year">Month</label>
+            <input *ngIf="!date && !year" class="text-input" type="month" name="month" [(ngModel)]="month">
+        </div>
+        <div class='form-group'>
+            <label class="label" *ngIf="!date && !month">Year</label>
+            <input *ngIf="!date && !month" class="text-input" type="number" name="year" [(ngModel)]="year">
+        </div>
+        <div class='form-group'>
+            <input class="submit-btn" type="submit" value="Get information">
+        </div>
+        
+        <div class="error" *ngIf="error">Es necesario llenar por lo menos un campo</div>
+    </form>
+</div>
+<div class="graph-container" >
+    <app-graph [dataGraph]="dataGraph" *ngIf="dataGraph"></app-graph>
+</div>
+    
+
+

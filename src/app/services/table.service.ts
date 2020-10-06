@@ -16,11 +16,26 @@ export class TableService {
     this.url=Global.url;
    }
 
+   saveIncome( month:string, amount:number ):Observable<any>{
+     return this._userService.user.pipe(
+      exhaustMap(user=>{
+        const body = {
+          month,
+          amount,
+          user:user.id
+        }
+
+        return this._http.post(`${this.url}save-income`, body)
+      })
+     )
+   }
+
    getTableData(param:string):Observable<any>{
     return this._userService.user.pipe(
       
       exhaustMap(user=>{
         const params=new HttpParams().set('month',param);
+        // return this._http.get('/get-income')
         return this._http.get(`${this.url}get-tickets/${user.id}`,{params})
       }),catchError(this.handleError)
      

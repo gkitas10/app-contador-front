@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
        if(response.dataUser){
          console.log('data user',response.dataUser)
-          this.router.navigate(['/tickets']);
+          this.router.navigate(['/ticket']);
           
         }
       },

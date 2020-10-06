@@ -21,7 +21,7 @@ export class TableComponent implements OnInit {
     console.log(form.value.month);
     this._tableService.getTableData(form.value.month).subscribe(res=>{
       this.totalsArray=res.dataArrays;
-      
+      console.log( 'resp', res);
       console.log(this.totalsArray);
     },errorRes=>this.error=errorRes);
   }

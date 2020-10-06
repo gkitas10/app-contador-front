@@ -7,10 +7,11 @@ import { TicketService } from "../../../services/ticket.service";
   templateUrl: './ticket-list.component.html',
   styleUrls: ['./ticket-list.component.css']
 })
-export class TicketListComponent implements OnInit {
+export class TicketListComponent implements OnInit{
   public tickets:Array<any>;
-  public count:number;
+  public count=0;
   public from=0;
+  public pages:number;
   
 
   constructor(private _ticketService:TicketService) {
@@ -18,10 +19,13 @@ export class TicketListComponent implements OnInit {
    }
 
   ngOnInit() {
+    
   }
 
   onSubmit(form:NgForm){
-    console.log(this.from);
+    console.log(form)
+    
+    
     this._ticketService.getTicketItems(
       form.value.concept,
       form.value.product,
@@ -34,6 +38,7 @@ export class TicketListComponent implements OnInit {
         this.tickets=res.ticketsDB;
         this.count=res.count;
         console.log(this.tickets);
+        this.getPages();
       },error=>{
         console.log(error);
       }
@@ -43,10 +48,21 @@ export class TicketListComponent implements OnInit {
   nextPage(form:NgForm){
     this.from=this.from+12;
     this.onSubmit(form);
+    this.getPages();
   }
 
   previousPage(form:NgForm){
-    this.from=this.from-12;
+    this.from=this.from - 12;
     this.onSubmit(form);
+    this.getPages();
+  }
+
+  getPages(){
+    let pages=Math.ceil(this.count / 12);
+    if(pages === 0){
+      pages=1;
+    }
+
+    this.pages=pages;
   }
 }

@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { HeaderComponent } from './components/header/header.component';
-import { IncomeStatementComponent } from './components/income-statement/income-statement.component';
+import { GraphicsComponent } from './components/graphics/Graphics.component';
 import {AuthInterceptorService} from './components/interceptors/auth-interceptor.service';
 import { GraphComponent } from './components/graph/graph.component';
 import { TableComponent } from './components/table/table.component';
@@ -25,7 +25,7 @@ import { TicketItemComponent } from './components/ticket/ticket-item/ticket-item
     SignupComponent,
     TicketComponent,
     HeaderComponent,
-    IncomeStatementComponent,
+    GraphicsComponent,
     GraphComponent,
     TableComponent,
     TicketListComponent,

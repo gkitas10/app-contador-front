@@ -3,9 +3,9 @@
         <ul>
             <li routerLinkActive="active" *ngIf="!isLoggedIn"><a [routerLink]="['login']">Log in</a></li>
             <li routerLinkActive="active" *ngIf="!isLoggedIn"><a [routerLink]="['signup']">Sign up</a></li>
-            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']" >Estado de resultados</a></li>
-            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['tickets']">Tickets</a></li>
-            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['flujo-efectivo']">Flujo de efectivo</a></li>
+            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['graphics']" >Gráficas</a></li>
+            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['ticket']">Nuevo Ticket</a></li>
+            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']">Estado de resultados</a></li>
             <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['ticket-list']">Listado de tickets</a></li>
             <li *ngIf="isLoggedIn"><a (click)="onLogout()">Log out</a></li>
         </ul>

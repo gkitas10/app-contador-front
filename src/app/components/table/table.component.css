@@ -1,20 +1,112 @@
 :host{
-    display:flex;
-    height: 600px;
-}
-
-.main-container{
-    width: 100%;
+    margin:1px solid black;
     display: flex;
-}
-
-.table-container{
-    border: 1px solid black;
-    width: 50%;
+    min-height: 600px;
 }
 
 .sidebar{
-    background-color: gray;
+    background-color: rgb(40, 44, 52);
     width: 20%;
+    display: flex;
+    flex-direction: column;
+    padding-top:20px;
+    padding-left: 20px;
+    align-items: flex-start;
+    
 }
+
+.form{
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+.label{
+    color:rgb(97, 218, 251);
+    font-size: 1.4rem;
+    margin-bottom: 0;
+    margin-top:2rem;
+
+}
+
+.input{
+    margin-top:2rem;
+}
+
+.button{
+    margin-top:1rem;
+}
+
+
+.income-statement-container{
+    background-color:white;
+    flex-grow: 1;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.profit-and-loss-container{
+    display: flex;
+    background-color:#ecf0f3;
+    justify-content: space-around;
+    width: 80%;
+    padding:15px 0px;
+    border-radius: 20px;
+    margin-top: 30px;
+    
+}
+
+.profit-and-loss-container__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profit-and-loss-container__label{
+    font-size: 1rem;
+}
+
+.profit-and-loss-container__amount{
+    font-size:2rem;
+    
+}
+
+.profit-and-loss-container__symbol{
+    display:flex;
+    align-items: center;
+}
+
+.table-container{
+    display:flex;
+    flex-direction: column;
+    width: 80%;
+    border-bottom: 1px solid #ecf0f3;
+    margin-top: 30px;
+ }
+
+.table-container__row{
+    display:flex;
+ }
+
+ .concept{
+    width: 75%;
+    border-top: 1px solid #ecf0f3;
+    padding: 14px 10px;
+    font-family: Helvetica, Arial;
+    font-size: 1rem;
+ }
+ 
+ .amount{
+    padding: 14px 10px;
+    flex-grow: 1;
+    border-top: 1px solid #ecf0f3;
+    text-align: right;
+    font-family: Helvetica, Arial;
+    font-size: 1rem;
+ }
+
+
 

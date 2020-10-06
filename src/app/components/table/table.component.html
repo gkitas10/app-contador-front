@@ -1,19 +1,59 @@
-<div class="main-container">
-    <div class="sidebar">
-        <form class="form" #Form="ngForm" (ngSubmit)="onSubmit(Form)">
-            <label>Período </label>
-            <input type="month" class="main-container__month" ngModel name="month" required>
-            <input type="submit" [disabled]='!Form.valid'>
-        </form>
+<div class="sidebar">
+  <form class="form" #Form="ngForm" (ngSubmit)="onSubmit(Form)">
+    <div class="form-group">
+      <label class="label">Período </label>
+      <input
+        type="month"
+        class="input"
+        ngModel
+        name="month"
+        required
+      />
     </div>
+    <div class="form-group">
+      <input class='button' type="submit" [disabled]="!Form.valid"/>
+    </div>
+    
+  </form>
+  <form class="form" #IncomeForm="ngForm" (ngSubmit)="onSubmit(IncomeForm)">
+    <div class="form-group">
+      <label class="label">Inserta un presupuesto o salario</label>
+      <input type="number" name="income" ngModel required>
+    </div>
+    <div class="form-group">
+      <label class="label">Mes</label>
+      <input type="month" name="month" ngModel required>
+    </div>
+    <div class="form-group">
+      <input class='button' type="submit" [disabled]="!IncomeForm.valid"/>
+    </div>
+  </form>
+</div>
+<div class="income-statement-container">
+    <div class="error" *ngIf="error">
+      {{ error }}
+    </div>
+    <div class="profit-and-loss-container">
+        <div class="profit-and-loss-container__item">
+            <span class="profit-and-loss-container__label">Ingresos</span>
+            <span class="profit-and-loss-container__amount">$1000</span>
+        </div>
+        <div class="profit-and-loss-container__symbol">-</div>
+        <div class="profit-and-loss-container__item">
+            <span class="profit-and-loss-container__label">Gastos</span>
+            <span class="profit-and-loss-container__amount">$1000</span>
+        </div>
+        <div class="profit-and-loss-container__symbol">=</div>
+        <div class="profit-and-loss-container__item">
+            <span class="profit-and-loss-container__label">Remanente</span>
+            <span class="profit-and-loss-container__amount">$300</span>
+        </div>
+    </div>
+
     <div class="table-container">
-        <div class="error" *ngIf="error">{{error}}</div>
-        
-            <div class="table-container" *ngFor="let ticket of totalsArray">
-                <div>
-                    {{ticket.concept}}     {{ticket.amount}}
-                </div>
-                
-            </div>     
+      <div class="table-container__row" *ngFor="let ticket of totalsArray">
+        <div class="concept">{{ ticket.concept }}</div>
+        <div class="amount">${{ ticket.amount }}</div>
+      </div>
     </div>
 </div>

@@ -1,0 +1,32 @@
+:host{
+    display: flex;
+    height: 100vh;
+    background-color: rgb(64, 74, 83);;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container{
+    width: 40%;
+    border: 1px solid black;
+    text-align: center;
+    
+    border-radius: 1rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding:3rem 2rem;
+}
+
+.label{
+    text-align: left;
+}
+
+    
+input[type='submit'] {
+    width: 100%;
+    padding:1rem;
+    font-size: 1rem;
+    color:white;
+    background-color: rgb(26, 32, 45);
+}

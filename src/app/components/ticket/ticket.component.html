@@ -1,27 +1,30 @@
-<h1>Ingresa tus tickets de compra</h1>
-
 <div class="form-container">
+    <h1>Ingresa tus tickets de compra</h1>
     <form #TicketForm="ngForm" (ngSubmit)="onSubmit(TicketForm)">
-    <p>
-        <label>Cantidad</label>
+    <div class="form-group">
+        <label class="label">Cantidad</label>
         <input type="text" name="amount" ngModel required>
-    </p>
-    <p>
-        <label>Categoría</label>
+    </div>
+    <div class="form-group">
+        <label class="label">Categoría</label>
         <input type="text" name="concept" ngModel required>
-    </p>
-    <p>
-        <label>Producto</label>
+    </div>
+    <div class="form-group">
+        <label class="label">Producto</label>
         <input type="text" name="product" ngModel required>
-    </p>
-    <p>
-        <label>Proveedor o Tienda</label>
+    </div>
+    <div class="form-group">
+        <label class="label">Proveedor o Tienda</label>
         <input type="text" name="provider" ngModel required>
-    </p>
-    <p>
-        <label>Fecha</label>
+    </div>
+    <div class="form-group">
+        <label class="label" for="notes">Notas</label>
+        <textarea type="text" name="notes" ngModel></textarea>
+    </div>
+    <div class="form-group">
+        <label class="label">Fecha</label>
         <input type="date" name="date" ngModel required>
-    </p>
+    </div>
     <input type="submit" value="Guardar" [disabled]='!TicketForm.valid'>
 </form>
 </div>

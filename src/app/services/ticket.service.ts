@@ -21,7 +21,12 @@ export class TicketService {
   }
 
   saveTicket(
-    amount: number, concept: string, product:string, provider:string, date: Date
+    amount: number,
+    concept: string,
+    product:string,
+    provider:string,
+    date: string,
+    notes?: string
     ): Observable<any> {
     let body = {
       amount,
@@ -29,6 +34,7 @@ export class TicketService {
       product,
       provider,
       date,
+      notes
     };
 
     return this._http.post(this.url + "save-ticket", body).pipe(
@@ -68,6 +74,20 @@ export class TicketService {
         return this._http.post(`${this.url}ticket-items/${user.id}/?from=${from}`,body);
       })
     )
+  }
+ //Request that gets tickets array and data for graph
+  getTicketsForGraphics(
+    concept?:string,
+    date?:string,
+    month?:string,
+    year?:number
+  ):Observable<any>{
+    const body = { concept, date, month, year }
+    return this._userService.user.pipe(
+      exhaustMap(user => {
+        return this._http.post(`${this.url}tickets-graph/${user.id}`, body);
+      })
+    );
   }
 //Funcion principal que devuelve lo que proviene de las funciones filtradoras de abajo
 //y que alimenta el onsubmit de incomestatement
@@ -429,7 +449,7 @@ export class TicketService {
     let labelArr=[];
 
     for (let i=0;i<monthsArr.length;i++){
-      switch (monthsArr[i]){
+      switch ( monthsArr[i] ) {
         case '01':labelArr.push('Enero')
         break;
         case '02':labelArr.push('Febrero')

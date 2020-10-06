@@ -12,14 +12,13 @@
 }
 .flex-item{
     width: 100%;
-    background-color: rgb(165, 51, 159);
     display: flex;
    
 }
 .canvas-container{
     display: flex;
     width: 100%;
-    background-color: chartreuse; 
+   
 
 }
 canvas{

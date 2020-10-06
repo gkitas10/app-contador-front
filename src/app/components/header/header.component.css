@@ -7,7 +7,7 @@
 }
 #navbar{
 
-    background: saddlebrown;
+    background-color: rgb(32,35,42);
     height: 80px;
     width: 100%;
     padding: 30px;
@@ -17,7 +17,7 @@ li{
     display: inline; 
 }
 a{
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 15px;
     font-family: Helvetica,Arial;
     margin-left: 25px;
