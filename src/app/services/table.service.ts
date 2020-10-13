@@ -16,12 +16,13 @@ export class TableService {
     this.url=Global.url;
    }
 
-   saveIncome( month:string, amount:number ):Observable<any>{
+   saveIncome( concept:string, amount:number, month:string ):Observable<any>{
      return this._userService.user.pipe(
       exhaustMap(user=>{
         const body = {
-          month,
+          concept,
           amount,
+          month,
           user:user.id
         }
 
@@ -30,17 +31,33 @@ export class TableService {
      )
    }
 
-   getTableData(param:string):Observable<any>{
-    return this._userService.user.pipe(
+   getIncomeArray ( param: string ):Observable<any> {
+      const params = new HttpParams().set('month',param);
+      return this._http.get(`${this.url}get-income`, {params})
+   }
+
+   getTableData ( param:string ):Observable<any> {
+      return this._userService.user.pipe(
       
       exhaustMap(user=>{
         const params=new HttpParams().set('month',param);
-        // return this._http.get('/get-income')
+        //const income = this._http.get(`${this.url}get-income`, {params})
         return this._http.get(`${this.url}get-tickets/${user.id}`,{params})
+
+        
       }),catchError(this.handleError)
      
     );
    }
+
+   getTotal(incomeArray:Array<any>){
+    let total=0;
+    incomeArray.forEach((incomeObj)=>{
+      total += incomeObj.amount;
+    })
+    return total;
+
+  }
 
    private handleError(errorRes:HttpErrorResponse){
     let defaultMessage='An error has occurred';

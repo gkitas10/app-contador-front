@@ -17,7 +17,7 @@ export class GraphComponent implements OnInit, OnChanges{
   @Input() dataGraph:Array<any>;
 
   constructor(private _ticketService:TicketService) { 
-    this.lineChartOptions={responsive:true},
+    this.lineChartOptions={ responsive:true, maintainAspectRatio: false },
     this.lineChartColors=[{
       backgroundColor:'rgba(148,159,177,0.2)',
       borderColor:'rgba(148,159,177,1)',

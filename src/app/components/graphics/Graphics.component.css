@@ -1,6 +1,6 @@
 :host{
     display:flex;
-    min-height: 600px;
+    
 }
 
 .form-container{
@@ -8,6 +8,8 @@
     display: flex;
     justify-content: center;
     background-color: rgb(40, 44, 52);
+    min-height: 580px;
+    padding:20px 10px;
 }
 
 form{
@@ -43,6 +45,8 @@ input[type='submit']:hover{
 
 .graph-container{
     flex-grow: 1;
+    display:flex;
+    justify-content: center;
 }
 
 .total{
