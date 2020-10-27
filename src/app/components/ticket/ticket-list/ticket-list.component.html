@@ -2,15 +2,15 @@
     <form #TicketListForm="ngForm" class="form" (ngSubmit)="onSubmit(TicketListForm)">
         <div class="form__group">
             <label>Categoría</label>
-            <input type="text" name="concept" ngModel>
+            <input type="text" name="concept" placeholder="Escribe una categoría..." ngModel>
         </div>
         <div class="form__group" >
             <label>Producto o servicio</label>
-            <input type="text" name="product" ngModel>
+            <input type="text" name="product" placeholder="Escribe el producto o servicio..." ngModel>
         </div>
         <div class="form__group">
             <label>Proveedor o Tienda</label>
-            <input type="text" class="form__input" name="provider" ngModel>
+            <input type="text" class="form__input" name="provider" placeholder="Escribe el proveedor o tienda..." ngModel>
         </div>
         <div class="form__group">
             <label>Fecha</label>
@@ -21,7 +21,7 @@
             <input type="month" name="month" ngModel>
         </div>
         <div class="form__group">
-            <input type="submit" value="Enviar">
+            <input class="btn" type="submit" value="Enviar">
         </div>
     </form>
 </div>

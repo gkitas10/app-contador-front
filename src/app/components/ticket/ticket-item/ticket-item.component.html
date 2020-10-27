@@ -1,7 +1,17 @@
-<div>
-    <p>{{ticket.concept}}<span>{{ticket.amount}}</span></p>
+<div class="concept-amount-container">
+    <div class="concept">{{ticket.concept}}</div><div class="amount">${{ticket.amount}}</div>
 </div>
-<div>{{ticket.product}}</div>
-<div>{{ticket.provider}}</div>
-<div>{{ticket.date}}  </div>
+<div class="prop-container">
+    <div class="prop-label">Producto:</div><div class="props">{{ ticket.product}}</div>
+</div>
+<div class="prop-container">
+    <div class="prop-label">Proveedor o tienda:</div><div class="props"> {{ticket.provider}}</div>
+</div>
+<div class="prop-container">
+    <div class="prop-label">Date:</div><div class="props"> {{ticket.date}}</div>
+</div>
+<div class="notes-link" (click)="showAnnotations()">Anotaciones</div>
+<div class="annotations" *ngIf="!hideAnnotations && ticket.notes !== '' ">
+    {{ticket.notes}}
+</div>
  

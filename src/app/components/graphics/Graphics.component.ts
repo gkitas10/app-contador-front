@@ -18,6 +18,7 @@ export class GraphicsComponent implements OnInit {
   public year:number;
   public error:boolean;
   public newARR:any[];
+  public showInput:String;
   
 
   constructor(private _ticketService: TicketService) {
@@ -64,13 +65,29 @@ export class GraphicsComponent implements OnInit {
       form.value.month,
       form.value.year
     ).subscribe(res=>{
-      console.log(res.data)
+      
       this.filteredArray=res.data[0];
       this.dataGraph=res.data[1];
+      this.showInput = this.getInputWord(res.data[1][0].label) 
+      console.log(this.showInput)
       this.getTotal();
       
     },error =>{
       console.log(error)
     })
   } 
+
+  /*onSecondSubmit(){
+
+  }*/
+
+  getInputWord(sentence){
+    const words = sentence.split(" ");
+    const lastWord = words[ words.length -1 ];
+
+    if( lastWord === 'mes' ) return 'date'
+    if( lastWord === 'año' ) return 'month'
+    if( lastWord === 'anualmente' ) return 'year'
+  }
+
 }

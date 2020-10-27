@@ -1,4 +1,3 @@
-
 :host{
     background-color:white;
     display: flex;
@@ -6,4 +5,53 @@
     padding: 1rem;
     border-radius: 50px;
     margin:1rem;
+    position: relative;
+    justify-content: center;
+    
 }
+
+.concept-amount-container{
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.concept{
+    font-size: 1.3rem;
+    width: 70%;
+}
+
+.amount{
+    flex-grow:1;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.prop-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.props{
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+
+.notes-link{
+    cursor: pointer;
+}
+
+.annotations{
+    position: absolute;
+    z-index: 1;
+    background-color: #F0F2F5;
+    width: 100%;
+    overflow-wrap: break-word;
+    top:85%;
+    border-radius: 12px;
+    border:1px none gray;
+    box-shadow: 1px 1px gray;
+    padding:10px
+}
+

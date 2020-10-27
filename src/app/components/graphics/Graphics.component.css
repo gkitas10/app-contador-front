@@ -1,20 +1,31 @@
 :host{
     display:flex;
-    
 }
 
 .form-container{
+    padding-top: 20px;
     width: 20%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: rgb(40, 44, 52);
-    min-height: 580px;
-    padding:20px 10px;
+    min-height: 100vh;
+    
 }
 
-form{
+.form-group{
     display: flex;
     flex-direction: column;
+    margin-bottom: 0;
+}
+
+.form-control{
+    -webkit-appearance: none;
+    outline: none;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    height: 2.2rem;
 }
 
 .total{
@@ -24,19 +35,15 @@ form{
 
 .label{
     color:rgb(97, 218, 251);
-}
-
-input{
-    margin:0;
+    
 }
 
 input[type='submit'] {
-    width: 100%;
-    padding:1rem;
-    font-size: 1rem;
-    color:white;
     background-color: rgb(26, 32, 45);
-    
+    height: 2.5rem;
+    color:white;
+    border-radius: 4px;
+    margin-top: 15px;
 }
 
 input[type='submit']:hover{
@@ -47,16 +54,6 @@ input[type='submit']:hover{
     flex-grow: 1;
     display:flex;
     justify-content: center;
-}
-
-.total{
-    width:50%;
-}
-
-
-.text-input{
-    display:block;
-    width:90%;
 }
 
 

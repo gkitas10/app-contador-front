@@ -50,6 +50,10 @@ export class TableService {
     );
    }
 
+  getAccumulatedProductsAmounts( concept:String, month:String ):Observable<any>{
+    return this._http.get(`${this.url}get-products?concept=${concept}&month=${month}`)
+  }
+
    getTotal(incomeArray:Array<any>){
     let total=0;
     incomeArray.forEach((incomeObj)=>{

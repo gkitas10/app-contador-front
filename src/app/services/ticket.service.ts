@@ -89,9 +89,10 @@ export class TicketService {
       })
     );
   }
+
 //Funcion principal que devuelve lo que proviene de las funciones filtradoras de abajo
 //y que alimenta el onsubmit de incomestatement
-  filterTickets(form: NgForm, tickets: Array<any>) {
+  /*filterTickets(form: NgForm, tickets: Array<any>) {
 //there is concept and date
     if(form.value.concept!=='' && form.value.date){
       const filteredArray = tickets.filter(
@@ -518,7 +519,7 @@ export class TicketService {
     ));
 
     return yearsArr;
-  }
+  }*/
 
   getTotal(filteredArray:Array<any>){
     let total=0;

@@ -66,13 +66,27 @@
     </div>
 
     <div class="table-container">
-      <div class="table-container__row" *ngFor="let ticket of expensesArray">
+      <div class="table-container__row" *ngFor="let ticket of expensesArray" (click)="getAccumulatedProductsAmounts($event)">
         <div class="concept">{{ ticket.concept }}</div>
         <div class="amount">${{ ticket.amount }}</div>
       </div>
       <div class="table-container__row" *ngIf="totalExpenditure">
         <div class="concept total">Gasto total</div>
         <div class="amount total">${{totalExpenditure}}</div>
+      </div>
+    </div>
+    <div class="table-container" *ngIf="showProductsTable">
+      <div class="table-container__row">
+        <div class="header">Servicio o producto de "{{expensesConcept}}"</div>
+        <div class="amount">Cantidad</div>
+      </div>
+      <div class="table-container__row" *ngFor="let product of productsArray">
+        <div class="concept">{{ product.concept }}</div>
+        <div class="amount">${{ product.amount }}</div>
+      </div>
+      <div class="table-container__row" *ngIf="totalExpenditure">
+        <div class="concept total">Total</div>
+        <div class="amount total">${{totalProducts}}</div>
       </div>
     </div>
 </div>
