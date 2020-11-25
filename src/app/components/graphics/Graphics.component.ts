@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TicketService } from "../../services/ticket.service";
 import { NgForm } from "@angular/forms";
+import { GraphicsService } from '../../services/graphics.service';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class GraphicsComponent implements OnInit {
   public tickets: any[];
   public filteredArray: any[];
   public dataGraph:any[];
+  public dataGraphSecondLine:any[];
   public total:number;
   public date:string;
   public month:string;
@@ -21,7 +23,7 @@ export class GraphicsComponent implements OnInit {
   public showInput:String;
   
 
-  constructor(private _ticketService: TicketService) {
+  constructor(private _ticketService: TicketService, private _graphicsService:GraphicsService) {
     this.error=false;
   }
 
@@ -59,7 +61,7 @@ export class GraphicsComponent implements OnInit {
     
     //this.getTotal();
 
-    let ARR=this._ticketService.getTicketsForGraphics(
+      this._ticketService.getTicketsForGraphics(
       form.value.concept,
       form.value.date,
       form.value.month,
@@ -77,11 +79,24 @@ export class GraphicsComponent implements OnInit {
     })
   } 
 
-  /*onSecondSubmit(){
+  onSubmitSecondLine(form: NgForm){
+    console.log(form.value)
+    this._ticketService.getTicketsForGraphics(
+      form.value.concept,
+      form.value.date,
+      form.value.month,
+      form.value.year
+    ).subscribe(res => {
+        this.dataGraphSecondLine = res.data[1]; 
+        const dataForGraphW2Lines = this._graphicsService.combineData(this.dataGraph, this.dataGraphSecondLine);   
+        console.log(dataForGraphW2Lines)
+    }, error =>{
+      console.log(error)
+    });
+  }
 
-  }*/
-
-  getInputWord(sentence){
+  //Get the type of input to show for the second form
+  getInputWord(sentence:string){
     const words = sentence.split(" ");
     const lastWord = words[ words.length -1 ];
 

@@ -36,6 +36,10 @@ export class TableService {
       return this._http.get(`${this.url}get-income`, {params})
    }
 
+   deleteIncome(id:string):Observable<any>{
+    return this._http.delete(`${this.url}delete-income/${id}`)
+   }
+
    getTableData ( param:string ):Observable<any> {
       return this._userService.user.pipe(
       

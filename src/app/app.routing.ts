@@ -8,6 +8,7 @@ import { GraphicsComponent } from './components/graphics/Graphics.component';
 import {AuthguardService} from './services/auth.guard.service';
 import { TableComponent } from './components/table/table.component';
 import {TicketListComponent} from './components/ticket/ticket-list/ticket-list.component';
+import { ComparativeGraphicsComponent } from './components/comparative-graphics/comparative-graphics.component';
 
 const appRoutes:Routes=[
     {path:'',redirectTo:'login',pathMatch:'full'},
@@ -16,6 +17,7 @@ const appRoutes:Routes=[
     {path:'income-statement', component:TableComponent, canActivate:[AuthguardService]},
     {path:'ticket', component:TicketComponent, canActivate:[AuthguardService]},
     {path:'graphics', component:GraphicsComponent, canActivate:[AuthguardService]},
+    {path:'other-graphics', component:ComparativeGraphicsComponent},
     {path:'ticket-list', component:TicketListComponent, canActivate:[AuthguardService]},
     {path:'**', component:LoginComponent},
   

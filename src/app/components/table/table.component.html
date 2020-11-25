@@ -15,19 +15,19 @@
     </div>
     
   </form>
-  <form class="form" #IncomeForm="ngForm" (ngSubmit)="onSubmitIncome(IncomeForm)" *ngIf='incomeArray'>
-    <label class="label">Inserta un presupuesto o salario</label>
-    <div>
+  <form class="form" id="form2" #IncomeForm="ngForm" (ngSubmit)="onSubmitIncome(IncomeForm)" *ngIf='incomeArray'>
+    <div class="label title">Inserta un presupuesto</div>
+    <div class="form-group">
       <label class="label">Tipo de ingreso</label>
-      <input type="text" name="concept" ngModel required autocomplete="off">
+      <input  class="input" type="text" name="concept" ngModel required autocomplete="off" placeholder="ej: sueldo, bono o comisión...">
     </div>
     <div class="form-group">
       <label class="label">Cantidad</label>
-      <input type="number" name="amount" ngModel required>
+      <input class="input" type="number" name="amount" ngModel required>
     </div>
     <div class="form-group">
       <label class="label">Mes</label>
-      <input type="month" name="month" ngModel required>
+      <input class="input" type="month" name="month" [(ngModel)]='month' required>
     </div>
     <div class="form-group">
       <input class='button' type="submit" [disabled]="!IncomeForm.valid"/>
@@ -35,39 +35,50 @@
   </form>
 </div>
 <div class="income-statement-container">
-    
     <div class="profit-and-loss-container">
         <div class="profit-and-loss-container__item income" (click)="getIncome()">
             <span class="profit-and-loss-container__label">Ingresos</span>
-            <span class="profit-and-loss-container__amount">
+            <span class="profit-and-loss-container__amount" *ngIf="error === ''">
               <div class="money-symbol">$</div>{{ totalIncome }}
             </span>
         </div>
         <div class="profit-and-loss-container__symbol">-</div>
         <div class="profit-and-loss-container__item">
             <span class="profit-and-loss-container__label">Gastos</span>
-            <span class="profit-and-loss-container__amount">
+            <span class="profit-and-loss-container__amount" *ngIf="error === ''">
               <div class="money-symbol">$</div>{{totalExpenditure}}
             </span>
         </div>
         <div class="profit-and-loss-container__symbol">=</div>
         <div class="profit-and-loss-container__item">
             <span class="profit-and-loss-container__label">Remanente</span>
-            <span class="profit-and-loss-container__amount">
+            <span class="profit-and-loss-container__amount" *ngIf="error === ''">
               <div class="money-symbol">$</div>{{profit}}
             </span>
         </div>
     </div>
-    <div class="table-container" *ngIf='showIncomeTable'>
-      <div class="table-container__row" *ngFor="let income of incomeArray">
+    
+    <div class="table-container income-table__container" *ngIf='showIncomeTable'>
+      <div class="x-button__container">
+        <div class="x-button" (click)='getIncome()'>x</div>
+      </div>
+      <div class="table-container__row income-title__row">
+        <div class="header">Ingreso</div>
+        <div class="amount">Cantidad</div>
+      </div>
+      <div class="income-error-msg" *ngIf="incomeError !== ''">
+        {{incomeError}}
+      </div>
+      <div class="table-container__row" *ngFor="let income of incomeArray; index as i">
         <div class="concept">{{ income.concept }}</div>
+        <div class="delete-button" (click)='deleteIncome(i)'>Eliminar</div>
         <div class="amount">${{ income.amount }}</div>
       </div>
     </div>
-
-    <div class="table-container">
+    <div class="error-msg" *ngIf="error !== ''">{{error}}</div>
+    <div class="table-container" *ngIf="error === ''">
       <div class="table-container__row" *ngFor="let ticket of expensesArray" (click)="getAccumulatedProductsAmounts($event)">
-        <div class="concept">{{ ticket.concept }}</div>
+        <div class="concept expenditure">{{ ticket.concept }}</div>
         <div class="amount">${{ ticket.amount }}</div>
       </div>
       <div class="table-container__row" *ngIf="totalExpenditure">
@@ -75,9 +86,12 @@
         <div class="amount total">${{totalExpenditure}}</div>
       </div>
     </div>
-    <div class="table-container" *ngIf="showProductsTable">
-      <div class="table-container__row">
-        <div class="header">Servicio o producto de "{{expensesConcept}}"</div>
+    <div class="table-container income-table__container" *ngIf="showProductsTable">
+      <div class="x-button__container">
+        <div class="x-button" (click)='toggleProductsTable()'>x</div>
+      </div>
+      <div class="table-container__row income-title__row">
+        <div class="header">Servicio o producto de la categoría "{{expensesConcept}}"</div>
         <div class="amount">Cantidad</div>
       </div>
       <div class="table-container__row" *ngFor="let product of productsArray">

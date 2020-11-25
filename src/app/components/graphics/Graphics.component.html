@@ -23,7 +23,7 @@
         
         <div class="error" *ngIf="error">Es necesario llenar por lo menos un campo</div>
     </form>
-    <form class="form2" #secondForm="ngForm" *ngIf="dataGraph">
+    <form class="form2" #secondForm="ngForm" *ngIf="dataGraph" (ngSubmit)="onSubmitSecondLine(secondForm)">
         <div class='form-group'>
             <label class="label">Concept</label>
             <input  class="text-input" name="concept" type="text" ngModel>

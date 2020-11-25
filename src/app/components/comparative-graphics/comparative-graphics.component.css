@@ -2,7 +2,7 @@
     display:flex;
 }
 
-.form-container{
+.sidebar{
     padding-top: 20px;
     width: 20%;
     display: flex;
@@ -18,6 +18,10 @@
     flex-direction: column;
 }
 
+.label{
+    color:rgb(97, 218, 251);
+}
+
 .form-control{
     -webkit-appearance: none;
     outline: none;
@@ -25,15 +29,6 @@
     border-radius: 4px;
     border: 1px solid #dddddd;
     height: 2.2rem;
-}
-
-.total{
-    color: white;
-    font-size: 1.5rem;
-}
-
-.label{
-    color:rgb(97, 218, 251);
 }
 
 input[type='submit'] {
@@ -50,8 +45,5 @@ input[type='submit']:hover{
 
 .graph-container{
     flex-grow: 1;
-    display:flex;
-    justify-content: center;
 }
-
 

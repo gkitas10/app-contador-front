@@ -17,6 +17,7 @@ import { GraphComponent } from './components/graph/graph.component';
 import { TableComponent } from './components/table/table.component';
 import { TicketListComponent } from './components/ticket/ticket-list/ticket-list.component';
 import { TicketItemComponent } from './components/ticket/ticket-item/ticket-item.component';
+import { ComparativeGraphicsComponent } from './components/comparative-graphics/comparative-graphics.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TicketItemComponent } from './components/ticket/ticket-item/ticket-item
     GraphComponent,
     TableComponent,
     TicketListComponent,
-    TicketItemComponent
+    TicketItemComponent,
+    ComparativeGraphicsComponent
   ],
   imports: [
     BrowserModule,

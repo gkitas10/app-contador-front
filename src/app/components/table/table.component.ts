@@ -1,68 +1,93 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { TableService } from 'src/app/services/table.service';
-import { TicketService } from '../../services/ticket.service';
+import { Expenditure, Income } from '../../models/tableInterface';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
-  public expensesArray:Array<number>;
-  public incomeArray:Array<number>;
+export class TableComponent {
+  public expensesArray:Array<Expenditure>;
+  public incomeArray:Array<Income>;
   public totalExpenditure:number;
-  public expensesConcept:String;
+  public expensesConcept:string;
   public totalIncome:number;
   public totalProducts:number;
-  public productsArray:Array<object>;
+  public productsArray:Array<Expenditure>;
   public profit:number;
   public showIncomeTable = false;
-  public month:String;
+  public month:string;
   public showProductsTable = false;
-  public error:String;
+  public error = '';
+  public deletedMsg:string;
+  public incomeError = '';
 
-  constructor(private _tableService:TableService, private _ticketService:TicketService) { 
+  constructor(private _tableService:TableService,) { 
     
-  }
-
-  ngOnInit() {
   }
 
   onSubmit(form:NgForm){
-    this.error='';
-    
-    this._tableService.getTableData(form.value.month).subscribe(res=>{
-    const dataArray = res.dataArrays;
-    this.expensesArray = dataArray;
-    this.totalExpenditure = this._tableService.getTotal( dataArray );
-    this.month = form.value.month;
+    this.error = '';
+    this._tableService.getTableData(form.value.month).subscribe(resp=>{
+      this.expensesArray = resp.dataArrays;
+      this.totalExpenditure = this._tableService.getTotal( this.expensesArray );
+      //Adjustment in case total expenditure isnt defined before calculating profit
+      if( isNaN(this.profit) ){
+      this.profit = this.totalIncome - this.totalExpenditure 
+      }
+      //defines property month in order to use it in getAccumulatedProductsAmounts method
+      this.month = form.value.month;
       
-    
-    },errorRes=>this.error = errorRes);
-
+    },errorRes=>{
+      this.error = errorRes;
+      return;
+    });
+    //gets all income objs for that month
     this._tableService.getIncomeArray( form.value.month ).subscribe(res=>{
     this.incomeArray = res.data;
-    this.totalIncome = this._tableService.getTotal( res.data );
-    console.log(res)
+    console.log(this.incomeArray)
+    this.totalIncome = this._tableService.getTotal( this.incomeArray );
     this.profit = this.totalIncome - this.totalExpenditure;
-    }, error=>console.log( error ))
+    }, error=>{
+      console.log(error)
+      this.incomeError = error;
+    })
   }
-
+//Save an income item and calls onsubmit
   onSubmitIncome( form:NgForm ) {
     this._tableService.saveIncome(
       form.value.concept, form.value.amount, form.value.month
       ).subscribe(res => {
-      console.log( res );
-      this.onSubmit( form );
+      //Gets all the expenditure and income for table  
+     this.onSubmit( form );
+     
     }, error => console.log( error ))
   }
-
+//Change name of this method
   getIncome(){
-    console.log( this.incomeArray )
     this.showIncomeTable = !this.showIncomeTable;
   }
+  //Delete an income obj
+  deleteIncome(idx:any){
+    const incomeToDelete = this.incomeArray[idx];
+    this._tableService.deleteIncome(incomeToDelete['_id']).subscribe(res => {
+    this.deletedMsg = res.msg;
+    //Deletes the item from the array to update
+    this.incomeArray = this.incomeArray.filter(incomeitem => (
+      incomeitem['_id'] !== incomeToDelete['_id']
+    ));
+//Calculate profit and income with new array
+    this.totalIncome = this._tableService.getTotal( this.incomeArray );
+    this.profit = this.totalIncome - this.totalExpenditure;
 
+    },error => {
+      console.log(error)
+    })
+  }
+   
+//gets products of specific concept and month
   getAccumulatedProductsAmounts( event:Event ){
      const concept = (<HTMLDivElement>event.target).innerHTML;
      this.expensesConcept = concept;
@@ -74,6 +99,10 @@ export class TableComponent implements OnInit {
      }, error => {
       console.log(error);
      })
+  }
+//hides products table when x button is clicked
+  toggleProductsTable(){
+    this.showProductsTable = !this.showProductsTable;
   }
 
 }

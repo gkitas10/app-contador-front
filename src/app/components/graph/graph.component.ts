@@ -38,10 +38,8 @@ export class GraphComponent implements OnInit, OnChanges{
 
   ngOnChanges(){
     console.log( this.dataGraph )
-    this.lineChartData=[{data:[0,1111,1111,0,0], label:'Todo'},{data:[2000,0,500,3000,4000]}]/*[this.dataGraph[0]];*/
-    //, {data:[1111,1111,2000], label:'Todo'}
-    //this.lineChartLabels=this.dataGraph[1];
-    this.lineChartLabels = ['eneero','feb','march','april','may']
+    this.lineChartData=[this.dataGraph[0]];
+    this.lineChartLabels=this.dataGraph[1];
   }
 
 }

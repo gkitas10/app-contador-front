@@ -14,7 +14,11 @@
 .form__group{
     display: flex;
     flex-direction: column;
-    
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
 }
 
 input{
@@ -35,6 +39,10 @@ input::placeholder{
     height: 2.5rem;
     background-color: rgba(32,35,42,.9);
     color:white;
+}
+
+.last-form-group{
+    margin-bottom: 0;
 }
 
 .tickets-container{

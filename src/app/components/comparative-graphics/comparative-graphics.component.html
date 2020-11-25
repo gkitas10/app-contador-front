@@ -1,0 +1,54 @@
+<div class="sidebar">
+    <form class="form1" #expensesForm="ngForm" (ngSubmit)="onSubmit(expensesForm)">
+        
+        <div class='form-group'>
+            <label class="label">Categoría</label>
+            <input class="form-control" name="concept" type="text" placeholder="Escribe la categoría..." [(ngModel)]="concept">
+        </div>
+        <div class='form-group' *ngIf='!year'>
+            <label class="label" >Mes</label>
+            <input class="form-control" type="month" name="month" [(ngModel)]="month">
+        </div>
+        <div class='form-group' *ngIf='!month'>
+            <label class="label">Año</label>
+            <input class="form-control" type="number" name="year" placeholder="yyyy ej: 2020" [(ngModel)]="year">
+        </div>
+        <div class='form-group'>
+            <input class="submit-btn" type="submit" value="Enviar">
+        </div>
+        
+     
+    </form>
+    <form class="form2" #secondForm="ngForm" (ngSubmit)="onSubmitSeconddataSet(secondForm)" *ngIf="showSecondForm">
+        <div class='form-group'>
+            <label class="label">Categoría</label>
+            <input  class="form-control" name="concept" type="text" ngModel>
+        </div>
+        <div class='form-group' *ngIf="showMonthInput">
+            <label class="label">Month</label>
+            <input class="form-control" type="month" name="month" ngModel>
+        </div>
+        <div class='form-group' *ngIf="showYearInput">
+            <label class="label">Year</label>
+            <input class="form-control" type="number" name="year" ngModel placeholder="yyyy ej: 2020">
+        </div>
+        <div class='form-group'>
+            <input type="submit" value="Enviar"/>
+        </div>
+    </form>
+</div>
+<div class="graph-container" *ngIf="lineChartData">
+    <canvas baseChart width="400" height="400"
+                      [datasets]="lineChartData"
+                      [labels]="lineChartLabels"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="lineChartType"
+        >
+    </canvas>   
+</div>
+    
+
+
+
