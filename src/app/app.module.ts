@@ -18,6 +18,9 @@ import { TableComponent } from './components/table/table.component';
 import { TicketListComponent } from './components/ticket/ticket-list/ticket-list.component';
 import { TicketItemComponent } from './components/ticket/ticket-item/ticket-item.component';
 import { ComparativeGraphicsComponent } from './components/comparative-graphics/comparative-graphics.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { ComparativeGraphicsComponent } from './components/comparative-graphics/
     TableComponent,
     TicketListComponent,
     TicketItemComponent,
-    ComparativeGraphicsComponent
+    ComparativeGraphicsComponent,
+    LineChartComponent,
+    PieChartComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,

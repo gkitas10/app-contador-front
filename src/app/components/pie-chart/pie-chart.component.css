@@ -1,8 +1,9 @@
 :host{
     display:flex;
+    width: 100%;
 }
 
-.sidebar{
+.form-container{
     padding-top: 20px;
     width: 20%;
     display: flex;
@@ -18,10 +19,6 @@
     flex-direction: column;
 }
 
-.label{
-    color:rgb(97, 218, 251);
-}
-
 .form-control{
     -webkit-appearance: none;
     outline: none;
@@ -29,6 +26,15 @@
     border-radius: 4px;
     border: 1px solid #dddddd;
     height: 2.2rem;
+}
+
+.total{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.label{
+    color:rgb(97, 218, 251);
 }
 
 input[type='submit'] {
@@ -49,6 +55,19 @@ input[type='submit']:hover{
     flex-direction: column;
 }
 
+.graph-type-button {
+    margin-left:5px;
+    margin-right: 5px;
+}
+
+.graph-type-container{
+    display: flex;
+    cursor: pointer;
+    background-color: #c8d6e5;
+    padding: 2px 5px;
+    width: fit-content;
+}
+
 .error-msg{
     background-color: #BA372A;
     color: white;
@@ -65,4 +84,6 @@ input[type='submit']:hover{
     width: 90%;
     align-self: center;
 }
+
+
 

@@ -1,53 +1,12 @@
-<div class="form-container">
-    <form class="form1" #expensesForm="ngForm" (ngSubmit)="onSubmit(expensesForm)">
-        <div class="total" *ngIf="total">Total:$ {{total}}</div>
-        <div class='form-group'>
-            <label class="label">Categoría</label>
-            <input class="form-control" name="concept" type="text" placeholder="Escribe la categoría..." ngModel>
-        </div>
-        <div class='form-group'>
-            <label class="label" *ngIf="!month && !year">Fecha</label>
-            <input class="form-control" *ngIf="!month && !year" type="date" name="date" [(ngModel)]="date">
-        </div>
-        <div class='form-group'>
-            <label class="label" *ngIf="!date && !year">Mes</label>
-            <input class="form-control" *ngIf="!date && !year" type="month" name="month" [(ngModel)]="month">
-        </div>
-        <div class='form-group'>
-            <label class="label" *ngIf="!date && !month">Año</label>
-            <input class="form-control" *ngIf="!date && !month" type="number" name="year" placeholder="yyyy ej: 2020" [(ngModel)]="year">
-        </div>
-        <div class='form-group'>
-            <input class="submit-btn" type="submit" value="Enviar">
-        </div>
-        
-        <div class="error" *ngIf="error">Es necesario llenar por lo menos un campo</div>
-    </form>
-    <form class="form2" #secondForm="ngForm" *ngIf="dataGraph" (ngSubmit)="onSubmitSecondLine(secondForm)">
-        <div class='form-group'>
-            <label class="label">Concept</label>
-            <input  class="text-input" name="concept" type="text" ngModel>
-        </div>
-        <div class='form-group' *ngIf="showInput === 'date'">
-            <label class="label" >Date</label>
-            <input *ngIf="!month && !year" class="text-input" type="date" name="date" [(ngModel)]="date">
-        </div>
-        <div class='form-group' *ngIf="showInput === 'month'">
-            <label class="label" *ngIf="!date && !year">Month</label>
-            <input *ngIf="!date && !year" class="text-input" type="month" name="month" [(ngModel)]="month">
-        </div>
-        <div class='form-group' *ngIf="showInput === 'year'">
-            <label class="label" *ngIf="!date && !month">Year</label>
-            <input *ngIf="!date && !month" class="text-input" type="number" name="year" [(ngModel)]="year">
-        </div>
-        <div class='form-group'>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
-</div>
-<div class="graph-container" >
-    <app-graph [dataGraph]="dataGraph" *ngIf="dataGraph"></app-graph>
-</div>
-    
-
-
+<app-line-chart 
+    *ngIf="graphType === 'Líneas'"
+    (graphType)="onChangeGraphType($event)"
+></app-line-chart>
+<app-pie-chart
+    *ngIf="graphType === 'Pastel'"
+    (graphType)="onChangeGraphType($event)"
+></app-pie-chart>
+<app-bar-chart
+    *ngIf="graphType === 'Barras'"
+    (graphType)="onChangeGraphType($event)"
+></app-bar-chart>

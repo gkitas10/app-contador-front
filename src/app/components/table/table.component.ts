@@ -20,6 +20,7 @@ export class TableComponent {
   public showIncomeTable = false;
   public month:string;
   public showProductsTable = false;
+  public showIncomeForm = false;
   public error = '';
   public deletedMsg:string;
   public incomeError = '';
@@ -30,6 +31,9 @@ export class TableComponent {
 
   onSubmit(form:NgForm){
     this.error = '';
+    this.incomeError = '';
+    this.showIncomeForm = true;
+    this.totalIncome = 0;
     this._tableService.getTableData(form.value.month).subscribe(resp=>{
       this.expensesArray = resp.dataArrays;
       this.totalExpenditure = this._tableService.getTotal( this.expensesArray );
@@ -41,6 +45,7 @@ export class TableComponent {
       this.month = form.value.month;
       
     },errorRes=>{
+      console.log(errorRes)
       this.error = errorRes;
       return;
     });
@@ -52,7 +57,7 @@ export class TableComponent {
     this.profit = this.totalIncome - this.totalExpenditure;
     }, error=>{
       console.log(error)
-      this.incomeError = error;
+      this.incomeError = error.error.error;
     })
   }
 //Save an income item and calls onsubmit

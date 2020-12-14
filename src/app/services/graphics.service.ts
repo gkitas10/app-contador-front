@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Global } from "./Global";
-import { Observable} from "rxjs";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GraphicsService {
+   
   public url=Global.url;
   constructor(private _http:HttpClient) { }
 
@@ -194,9 +195,8 @@ export class GraphicsService {
        
        return [ combined, dataForGraph, dataForGraph2 ];
   }
-
-
   
+
   
 }
 

@@ -68,16 +68,15 @@ export class TableService {
   }
 
    private handleError(errorRes:HttpErrorResponse){
-    let defaultMessage='An error has occurred';
+    let defaultMessage='Ha ocurrido un error';
 
-    if(!errorRes.error || !errorRes.error.err){
+    if(!errorRes.error || !errorRes.error.error){
       return throwError(defaultMessage);
     }
 
-    if(errorRes.error.err.message){
-      defaultMessage=errorRes.error.err.message;
+    if(errorRes.error.error){
+      defaultMessage = errorRes.error.error;
       return throwError(defaultMessage); 
-
       }
     }
    

@@ -37,8 +37,13 @@
         </div>
     </form>
 </div>
-<div class="graph-container" *ngIf="lineChartData">
-    <canvas baseChart width="400" height="400"
+<div class="graph-container">
+    <div class="error-msg error-msg__graph" 
+        *ngIf="errorReq"
+    >
+        {{errorReq}}
+    </div>
+    <canvas baseChart *ngIf="lineChartData"
                       [datasets]="lineChartData"
                       [labels]="lineChartLabels"
                       [options]="lineChartOptions"
@@ -48,6 +53,10 @@
         >
     </canvas>   
 </div>
+
+
+    
+  
     
 
 

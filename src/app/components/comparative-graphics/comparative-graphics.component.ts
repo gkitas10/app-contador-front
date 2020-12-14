@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartType, ChartOptions } from 'chart.js';
+import { Label } from 'ng2-charts';
 import { NgForm } from "@angular/forms";
 import { GraphicsService } from '../../services/graphics.service';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-comparative-graphics',
@@ -8,12 +11,38 @@ import { GraphicsService } from '../../services/graphics.service';
   styleUrls: ['./comparative-graphics.component.css']
 })
 export class ComparativeGraphicsComponent implements OnInit {
+  public errorReq:string;
   public lineChartData:Array<any>;
   public lineChartLabels:Array<string>;
   public lineChartOptions:any;
   public lineChartColors:Array<any>;
   public lineChartLegend:boolean;
   public lineChartType:string;
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+    legend: {
+      position: 'top',
+    },
+    plugins: {
+      datalabels: {
+        formatter: (value, ctx) => {
+          const label = ctx.chart.data.labels[ctx.dataIndex];
+          return label;
+        },
+      },
+    }
+  };
+  public pieChartLabels: Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
+  public pieChartData: number[] = [300, 500, 100];
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [pluginDataLabels];
+  public pieChartColors = [
+    {
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
+    },
+  ];
+  
   public month:string;
   public year:string;
   public InputValue:string;
@@ -24,7 +53,7 @@ export class ComparativeGraphicsComponent implements OnInit {
   public concept:string;//First form concept
   
   constructor(private _graphicsService:GraphicsService) {
-    this.lineChartOptions={ responsive:true, maintainAspectRatio: false },
+    this.lineChartOptions={ responsive:true /*maintainAspectRatio: false*/ },
     this.lineChartColors=[{
       backgroundColor:'rgba(148,159,177,0.2)',
       borderColor:'rgba(148,159,177,1)',
@@ -41,6 +70,7 @@ export class ComparativeGraphicsComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
+    this.errorReq = null;
     if( form.value.month === '' || form.value.month === undefined){
       this.InputValue = form.value.year;
       this.showMonthInput = false;
@@ -60,12 +90,14 @@ export class ComparativeGraphicsComponent implements OnInit {
     ).subscribe(
       res => {
         this.lineChartData = [ res.data[0] ];
+        console.log(this.lineChartData)
         this.lineChartLabels = res.data[1];
 
         res.data.length === 2 ? this.showSecondForm = true : null
         
       },error => {
         console.log(error)
+        this.errorReq = error.error.error;
       }
     );
 

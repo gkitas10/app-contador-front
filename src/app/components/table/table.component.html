@@ -15,7 +15,7 @@
     </div>
     
   </form>
-  <form class="form" id="form2" #IncomeForm="ngForm" (ngSubmit)="onSubmitIncome(IncomeForm)" *ngIf='incomeArray'>
+  <form class="form" id="form2" #IncomeForm="ngForm" (ngSubmit)="onSubmitIncome(IncomeForm)" *ngIf='showIncomeForm'>
     <div class="label title">Inserta un presupuesto</div>
     <div class="form-group">
       <label class="label">Tipo de ingreso</label>
@@ -59,21 +59,24 @@
     </div>
     
     <div class="table-container income-table__container" *ngIf='showIncomeTable'>
-      <div class="x-button__container">
-        <div class="x-button" (click)='getIncome()'>x</div>
-      </div>
-      <div class="table-container__row income-title__row">
-        <div class="header">Ingreso</div>
-        <div class="amount">Cantidad</div>
-      </div>
-      <div class="income-error-msg" *ngIf="incomeError !== ''">
-        {{incomeError}}
-      </div>
+      <div class="non-error-template" *ngIf="incomeError === ''; else elseBlock">
+        <div class="x-button__container">
+          <div class="x-button" (click)='getIncome()'>x</div>
+        </div>
+        <div class="table-container__row income-title__row">
+          <div class="header">Ingreso</div>
+          <div class="amount">Cantidad</div>
+        </div>
+      
       <div class="table-container__row" *ngFor="let income of incomeArray; index as i">
         <div class="concept">{{ income.concept }}</div>
         <div class="delete-button" (click)='deleteIncome(i)'>Eliminar</div>
         <div class="amount">${{ income.amount }}</div>
       </div>
+    </div>
+      <ng-template #elseBlock>
+        <div class="error-msg income-error-msg">{{incomeError}}</div>
+      </ng-template>
     </div>
     <div class="error-msg" *ngIf="error !== ''">{{error}}</div>
     <div class="table-container" *ngIf="error === ''">
