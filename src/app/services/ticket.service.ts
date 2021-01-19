@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Global } from "./Global";
 import { Ticket } from "../models/ticket";
-import { Observable} from "rxjs";
+import { Observable, Subject} from "rxjs";
 import { catchError, exhaustMap } from "rxjs/operators";
 import { throwError } from "rxjs";
 import { UserService } from "./user.service";
@@ -14,6 +14,9 @@ import { NgForm } from "@angular/forms";
 export class TicketService {
   public url: String;
   public ticket: Ticket;
+  public showModal = new Subject<{show:boolean, ticketid:string}>();
+  public deleteLocalTicket = new Subject<boolean>();
+ 
   
 
   constructor(private _http: HttpClient, private _userService: UserService) {
@@ -66,14 +69,19 @@ export class TicketService {
     provider?:string,
     date?:string,
     month?:string,
+    created?:string | Date,
     from?:number
     ):Observable<any>{
-    const body={concept,product,provider,date,month}
+    const body={concept,product,provider,date,month,created}
     return this._userService.user.pipe(
       exhaustMap((user)=>{
         return this._http.post(`${this.url}ticket-items/${user.id}/?from=${from}`,body);
       })
     )
+  }
+
+  deleteTicket(ticketid:string):Observable<any>{
+    return this._http.delete(`${this.url}delete-ticket/${ticketid}`)
   }
 
   getTotal(filteredArray:Array<any>){

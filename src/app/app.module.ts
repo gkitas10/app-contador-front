@@ -2,8 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
-import { routing,appRoutingProviders } from './app.routing';
+import { routing, appRoutingProviders } from './app.routing';
 import {ChartsModule} from 'ng2-charts';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { environment } from '../environments/environment';
 
 
 import { AppComponent } from './app.component';
@@ -21,6 +24,7 @@ import { ComparativeGraphicsComponent } from './components/comparative-graphics/
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +41,12 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
     ComparativeGraphicsComponent,
     LineChartComponent,
     PieChartComponent,
-    BarChartComponent
+    BarChartComponent,
+    ModalComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

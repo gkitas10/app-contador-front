@@ -1,3 +1,6 @@
+<div class="x-button"
+    (click)="showModal()"
+>X</div>
 <div class="concept-amount-container">
     <div class="concept">{{ticket.concept}}</div><div class="amount">${{ticket.amount}}</div>
 </div>
@@ -8,10 +11,21 @@
     <div class="prop-label">Proveedor o tienda:</div><div class="props"> {{ticket.provider}}</div>
 </div>
 <div class="prop-container">
-    <div class="prop-label">Date:</div><div class="props"> {{ticket.date}}</div>
+    <div class="prop-label">Fecha de compra:</div><div class="props"> {{ticket.date}}</div>
 </div>
 <div class="notes-link" (click)="showAnnotations()">Anotaciones</div>
 <div class="annotations" *ngIf="!hideAnnotations && ticket.notes !== '' ">
     {{ticket.notes}}
 </div>
+<div class="prop-container">
+    <div class="created-label">
+        Fecha de creación del ticket:
+    </div>
+    <div class="created-prop">
+        {{ticket.created}}
+    </div>
+</div>
+
+
+
  

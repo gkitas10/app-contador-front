@@ -70,6 +70,7 @@ export class ComparativeGraphicsComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
+    this.lineChartData = null;
     this.errorReq = null;
     if( form.value.month === '' || form.value.month === undefined){
       this.InputValue = form.value.year;
@@ -104,6 +105,7 @@ export class ComparativeGraphicsComponent implements OnInit {
   }
 
   onSubmitSeconddataSet(form:NgForm){
+    this.errorReq = null;
     if( form.value.month === '' || form.value.month === undefined){
       this.InputValue2 = form.value.year;
     }else{
@@ -143,6 +145,7 @@ export class ComparativeGraphicsComponent implements OnInit {
       this.showSecondForm = false;
     }, error => {
       console.log(error)
+      this.errorReq = error.error.error;
     });
   }
 }

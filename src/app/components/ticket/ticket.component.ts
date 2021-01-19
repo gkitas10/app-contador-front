@@ -9,8 +9,20 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./ticket.component.css']
 })
 export class TicketComponent implements OnInit {
-
   public ticket:Ticket;
+  public successMsg:string;
+  public errorMsg:string;
+  public showAmountAst:boolean;
+  public showConceptAst:boolean;
+  public showProductAst:boolean;
+  public showProviderAst:boolean;
+  public showDateAst:boolean;
+  public amount:number;
+  public concept:string;
+  public product:string;
+  public provider:string;
+  public date:string;
+  
 
   constructor(
     private _ticketService:TicketService,
@@ -21,7 +33,6 @@ export class TicketComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    
     this._ticketService.saveTicket(
       form.value.amount,
       form.value.concept,
@@ -30,12 +41,63 @@ export class TicketComponent implements OnInit {
       form.value.date,
       form.value.notes
       ).subscribe(
-      res=>{console.log(res);
+      res => { 
+        this.successMsg = res.message;
+        const date = new Date(res.ticketDB.created)
+        console.log(date)
+        setTimeout(()=>{
+          this.successMsg = undefined;
+        }, 3000)
+        
     },
     error=>{console.log(error);
+      this.errorMsg = error.error.message;
     }
   );
 
+  }
+
+  onBlurAmount(){
+    
+    if(!this.amount) {
+      this.showAmountAst = true;
+    }else{
+      this.showAmountAst = false;
+    }
+  }
+
+  onBlurConcept(){
+    
+    if(!this.concept) {
+      this.showConceptAst = true;
+    }else{
+      this.showConceptAst = false;
+    }
+  }
+
+  onBlurProduct(){
+    
+    if(!this.product) {
+      this.showProductAst = true;
+    }else{
+      this.showProductAst = false;
+    }
+  }
+
+  onBlurProvider(){
+    if(!this.provider) {
+      this.showProviderAst = true;
+    }else{
+      this.showProviderAst = false;
+    }
+  }
+
+  onBlurDate(){
+    if(!this.date) {
+      this.showDateAst = true;
+    }else{
+      this.showDateAst = false;
+    }
   }
 
 }

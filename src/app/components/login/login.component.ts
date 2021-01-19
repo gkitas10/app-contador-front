@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import {NgForm} from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { GoogleAuthService } from '../../services/google-auth.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,14 +19,15 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _userService:UserService,
-    private router:Router
+    private router:Router,
+    public _googleAuth:GoogleAuthService
   ) { }
 
   ngOnInit() {
   }
 
   onSubmit(form:NgForm){
-    
+    console.log('jecutando')
     this._userService.login(
       form.value.email,form.value.password
       ).subscribe(

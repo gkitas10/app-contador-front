@@ -1,5 +1,6 @@
 <div class="sidebar">
-    <form #TicketListForm="ngForm" class="form" (ngSubmit)="onSubmit(TicketListForm)">
+    <div (click)="showCreatedDateForm()" *ngIf="!showCreatedDate">Buscar por fecha de creación del ticket</div>
+    <form #TicketListForm="ngForm" class="form" (ngSubmit)="onSubmit(TicketListForm)" *ngIf="!showCreatedDate">
         <div class="form-group">
             <label>Categoría</label>
             <input type="text" name="concept" placeholder="Escribe una categoría..." ngModel>
@@ -24,16 +25,35 @@
             <input class="btn" type="submit" value="Enviar">
         </div>
     </form>
+    <form #CreatedDateForm="ngForm" *ngIf="showCreatedDate" (ngSubmit)="onSubmitCreatedDate(CreatedDateForm)">
+        <div (click)="hideCreatedDateForm()">Regresar</div>
+        <div class="form-group">
+            <label>Fecha de creación</label>
+            <input type="date" name="created" ngModel>
+        </div>
+        <input type="submit" value="Buscar">
+    </form>
 </div>
 <div class="tickets-container">
+    <div class="error-msg error-msg__graph" 
+    *ngIf="errorMsg">
+        {{errorMsg}}
+    </div>
     <app-ticket-item
-    *ngFor='let ticket of tickets'
+    *ngFor='let ticket of tickets; index as i'
     [ticket]='ticket'
+    
     ></app-ticket-item>
     <div class="pages" *ngIf="tickets">
         Se encontraron {{count}} resultados
-        <button *ngIf="from>=12" (click)=previousPage(TicketListForm)>Página anterior</button>
-        <button *ngIf="count-from>12" (click)=nextPage(TicketListForm)>Página siguiente</button>
+        <button *ngIf="from>=12" (click)=previousPage()>Página anterior</button>
+        <button *ngIf="count-from>12" (click)=nextPage()>Página siguiente</button>
         <div>Página {{from/12+1}} de {{pages}}</div>
-    </div>
+    </div>  
 </div>
+<app-modal *ngIf="showModal"
+    [ticket]='ticketToDelete'
+></app-modal>
+
+
+

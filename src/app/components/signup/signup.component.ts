@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -16,9 +18,12 @@ export class SignupComponent implements OnInit {
   constructor(
     private router: Router,
     private _userService:UserService
+    
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(firebase)
+   }
 
 onSubmit(form:NgForm){
   this._userService.signUp(

@@ -50,6 +50,7 @@ export class PieChartComponent implements OnInit {
   constructor(private _graphService:GraphService) { }
 
   ngOnInit(): void {
+    console.log(this.month, this.year)
   }
 
   onSubmit(form:NgForm){

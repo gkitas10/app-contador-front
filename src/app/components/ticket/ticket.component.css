@@ -30,3 +30,37 @@ input[type='submit'] {
     color:white;
     background-color: rgb(26, 32, 45);
 }
+
+.error-msg{
+    background-color: #BA372A;
+    color: white;
+    width: 80%;
+    padding: 20px 15px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin-top: 30px;
+}
+
+.error-msg__graph{
+    width: 90%;
+    align-self: center;
+}
+
+.success-msg {
+    background-color: #6ebd7d;
+    color: white;
+    width: 80%;
+    padding: 20px 15px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin-top: 30px;
+}
+
+.input-asterisk-container {
+    display: flex;
+}
+

@@ -1,11 +1,11 @@
 <div class="form-container">
     
     <form class="form1" #expensesForm="ngForm" (ngSubmit)="onSubmit(expensesForm)">
-        <div class='form-group'>
+        <div class='form-group' *ngIf='!year'>
             <label class="label">Mes</label>
             <input class="form-control" type="month" name="month" [(ngModel)]="month">
         </div>
-        <div class='form-group'>
+        <div class='form-group' *ngIf='!month'>
             <label class="label">Año</label>
             <input class="form-control" type="number" name="year" placeholder="yyyy ej: 2020" [(ngModel)]="year">
         </div>
