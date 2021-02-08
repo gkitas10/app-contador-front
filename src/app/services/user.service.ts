@@ -96,6 +96,7 @@ export class UserService {
         const tokenExpirationDate = new Date(
           new Date().getTime() + +resData.dataUser.expiresIn * 1000
         );
+
         const user = new User(
           resData.dataUser.id,
           resData.dataUser.email,
@@ -103,6 +104,7 @@ export class UserService {
           tokenExpirationDate
         );
         this.user.next(user);
+        //lo pasa de seg a mili
         this.autoLogout(resData.dataUser.expiresIn * 1000);
         localStorage.setItem("userData", JSON.stringify(user));
       
@@ -124,5 +126,10 @@ export class UserService {
     this.expTimer=setTimeout(()=>{
       this.logout();
     },expDuration)
+  }
+
+  googleSignIn(idToken:string, FireUser:any ): Observable<any> {
+    const body = { idToken, FireUser };
+    return this._http.post(this.url + "google-sign-in", body) 
   }
 }

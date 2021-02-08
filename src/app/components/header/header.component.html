@@ -1,18 +1,31 @@
-<nav id="navbar">
+<nav id="navbar" class="navbar">
+    
+    <div routerLinkActive="active" class="navbar__link-container" *ngIf="!isLoggedIn"><a [routerLink]="['login']">Log in</a></div>
+    <div routerLinkActive="active" class="navbar__link-container" *ngIf="!isLoggedIn"><a [routerLink]="['signup']">Sign up</a></div>
+    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['ticket']">Nuevo Ticket</a></div>
+    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['ticket-list']">Listado de tickets</a></div>
+    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']">Estado de resultados</a></div>
+    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['graphics']" >Gráficas</a></div>
+    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['other-graphics']" >Gráficas comparativas</a></div>
+    <div *ngIf="isLoggedIn" class="navbar__link-container navbar__logout-container"><a (click)="onLogout()">Log out</a></div>
+      
+</nav>
+
+<!-- <nav id="navbar">
     <div>
         <ul>
             <li routerLinkActive="active" *ngIf="!isLoggedIn"><a [routerLink]="['login']">Log in</a></li>
             <li routerLinkActive="active" *ngIf="!isLoggedIn"><a [routerLink]="['signup']">Sign up</a></li>
             <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['ticket']">Nuevo Ticket</a></li>
-            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']">Estado de resultados</a></li>
             <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['ticket-list']">Listado de tickets</a></li>
+            <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']">Estado de resultados</a></li>
             <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['graphics']" >Gráficas</a></li>
             <li routerLinkActive="active" *ngIf="isLoggedIn"><a [routerLink]="['other-graphics']" >Gráficas comparativas</a></li>
    
-     
-        
+            
+            
             <li *ngIf="isLoggedIn"><a (click)="onLogout()">Log out</a></li>
         </ul>
     </div>  
-</nav>
+</nav> -->
 

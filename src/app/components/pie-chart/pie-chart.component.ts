@@ -35,7 +35,7 @@ export class PieChartComponent implements OnInit {
       },
     }
   };
-
+//'rgba(0,255,224,0.3)', 'rgba(243,0,255,0.3)', 'rgba(61,104,110,0.3)''rgba(247,255,0,0.3)'
   public pieChartLabels: Label[];
   public pieChartData: number[];
   public pieChartType: ChartType = 'pie';
@@ -43,8 +43,9 @@ export class PieChartComponent implements OnInit {
   public pieChartPlugins = [pluginDataLabels];
   public pieChartColors = [
     {
-      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
-    },
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', 'rgba(247,255,0,0.3)',
+       'rgba(0,255,224,0.3)', 'rgba(243,0,255,0.3)', 'rgba(61,104,110,0.3)']
+    }
   ];
 
   constructor(private _graphService:GraphService) { }
@@ -56,7 +57,7 @@ export class PieChartComponent implements OnInit {
   onSubmit(form:NgForm){
     this.pieChartData = null;
     this.errorReq=null;
-    console.log('ji')
+    
     this._graphService.getDataForPieChart(form.value.month, form.value.year).subscribe(
       res => {
         this.pieChartLabels = res.data[0];

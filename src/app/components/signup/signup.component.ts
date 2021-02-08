@@ -3,8 +3,6 @@ import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
-import * as firebase from 'firebase/app';
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -22,7 +20,7 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(firebase)
+    
    }
 
 onSubmit(form:NgForm){
@@ -34,7 +32,6 @@ onSubmit(form:NgForm){
 
   ).subscribe(
     response=>{
-      console.log(response);
       if(response.user){
         this.reqStatus='succeed';
         this.router.navigate(['/login']);
@@ -43,11 +40,8 @@ onSubmit(form:NgForm){
     },
     errorMessage=>{
       this.error=errorMessage;
-      console.log(errorMessage)
       this.reqStatus='failed';
     }
   );
-  
-
 }
 }

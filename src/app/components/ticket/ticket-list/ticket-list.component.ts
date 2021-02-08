@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import { Event } from '@angular/router';
 import { TicketService } from "../../../services/ticket.service";
 import { Subscription } from 'rxjs';
 
@@ -41,40 +40,27 @@ export class TicketListComponent implements OnDestroy, OnInit{
       })
 
     this.deleteLocalSubs = this._ticketService.deleteLocalTicket.subscribe(res => {
-      console.log('desde localsubs', res)
     this.tickets = this.tickets.filter(ticket => (
     ticket._id !== this.ticketToDelete
     ))
-    console.log(this.tickets)  
+
     this.count = this.count - 1;
     this.getPages();
 
     if(this.tickets.length === 0){
       if(this.from >= 12){
         this.firstPage(this.form);
-        /*this.from=this.from - 12;
-        this.onSubmit(form);*/
       }
      }
     }, error => {
       console.log(error);
-    })
-
-     
-  
-
-    // this.count = this.count - 1;
-    // this.getPages();
-    
- 
-     
+    })   
   }
 
   onSubmit(form:NgForm){
     this.errorMsg = undefined;
     this.tickets = undefined;
     this.form = form;
-    console.log(this.form)
     this._ticketService.getTicketItems(
       form.value.concept,
       form.value.product,
@@ -87,7 +73,6 @@ export class TicketListComponent implements OnDestroy, OnInit{
       res=>{
         this.tickets=res.ticketsDB;
         this.count=res.count;
-        console.log(this.tickets);
         this.getPages();
       },error=>{
         this.errorMsg = error.error.message;
@@ -100,19 +85,14 @@ export class TicketListComponent implements OnDestroy, OnInit{
     this.tickets = undefined;
     const date = new Date(form.value.created.replace(/-/g, '\/')).toString();
     
-    console.log()
-    console.log(typeof date)
-    
     this._ticketService.getTicketItems(
       '','','','','', date, this.from
     ).subscribe(res=>{
-      console.log(res)
       this.tickets=res.ticketsDB;
       this.count=res.count;
       this.getPages();
     }
     ,error=> {
-      console.log(error)
       this.errorMsg = error.error.message;
     })
   }

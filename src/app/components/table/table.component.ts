@@ -45,18 +45,15 @@ export class TableComponent {
       this.month = form.value.month;
       
     },errorRes=>{
-      console.log(errorRes)
       this.error = errorRes;
       return;
     });
     //gets all income objs for that month
     this._tableService.getIncomeArray( form.value.month ).subscribe(res=>{
     this.incomeArray = res.data;
-    console.log(this.incomeArray)
     this.totalIncome = this._tableService.getTotal( this.incomeArray );
     this.profit = this.totalIncome - this.totalExpenditure;
     }, error=>{
-      console.log(error)
       this.incomeError = error.error.error;
     })
   }
@@ -88,7 +85,7 @@ export class TableComponent {
     this.profit = this.totalIncome - this.totalExpenditure;
 
     },error => {
-      console.log(error)
+      this.incomeError = 'Ha ocurrido un error'
     })
   }
    

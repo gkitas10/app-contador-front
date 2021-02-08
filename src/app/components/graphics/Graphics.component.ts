@@ -1,7 +1,4 @@
 import { Component, OnChanges } from "@angular/core";
-import { GraphService } from '../../services/graph.service';
-
-
 
 @Component({
   selector: "app-income-statement",
@@ -11,7 +8,7 @@ import { GraphService } from '../../services/graph.service';
 export class GraphicsComponent implements OnChanges{
  public graphType = 'Líneas';
 
-  constructor(private _graphService:GraphService) {
+  constructor() {
     
   }
 
@@ -21,6 +18,5 @@ export class GraphicsComponent implements OnChanges{
   //Change graph
   onChangeGraphType(event:string) {
     this.graphType = event;
-    console.log('En graphics', event)
   }
 }

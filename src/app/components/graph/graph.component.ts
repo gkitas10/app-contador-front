@@ -26,7 +26,7 @@ export class GraphComponent implements OnInit, OnChanges{
       pointHoverBackgroundColor:'#fff',
       pointHoverBorderColor:'rgba(148,159,177,0.8)'
     }],
-    this.lineChartLegend=true,
+    this.lineChartLegend=false,
     this.lineChartType='line'
 
   }

@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
   }
 
   onSubmit(form:NgForm){
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
     );
   
   }
+
 
 }
 

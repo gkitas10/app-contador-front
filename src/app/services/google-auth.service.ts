@@ -1,18 +1,11 @@
 import { Injectable } from '@angular/core';
+import { User } from "../models/user";
 import firebase from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import "firebase/auth";
 import { Router } from "@angular/router";
 import { UserService } from './user.service';
-
- interface User {
-  uid: string;
-  email: string;
-  displayName: string;
-  photoURL: string;
-  emailVerified: boolean;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -35,44 +28,41 @@ export class GoogleAuthService {
   AuthLogin(provider) {
     return this.afAuth.signInWithPopup(provider)
     .then((result) => {
-      console.log(result)
-      // this._userService.signUp(
-      //   result.user.displayName,
-      //   result.user.email,
-      //   ':)',
-        
+      firebase.auth().currentUser.getIdToken().then((idToken)=>{
+      this._userService.googleSignIn(idToken, result.user).subscribe(resData => {
+      const tokenExpirationDate = new Date(
+               new Date().getTime() + +resData.dataUser.expiresIn * 1000
+          );
 
-    //     form.value.name,
-    // form.value.email,
-    // form.value.password,
-    // form.value.img
-     // )
-    
-      
+          
+        console.log(typeof resData.dataUser.expiresIn, resData.dataUser.expiresIn)
+        console.log(typeof (resData.dataUser.expiresIn * 1000), resData.dataUser.expiresIn * 1000)
+
+      const user = new User(
+      resData.dataUser.id,
+      resData.dataUser.email,
+      resData.dataUser.access_token,
+      tokenExpirationDate
+    );
+
+      this._userService.user.next(user)
+      this._userService.autoLogout(resData.dataUser.expiresIn * 1000);
+      localStorage.setItem("userData", JSON.stringify(user));
+      this.router.navigate(['/ticket']);
+
+      }, error => {
+        this._userService.logout()
+      })
+    })
+
     }).catch((error) => {
-      window.alert(error)
+      console.log(error)
     })
   }
 
   signOut(){
     return this.afAuth.signOut();
   }
-  /* Setting up user data when sign in with username/password, 
-  sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  // SetUserData(user) {
-  //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-  //   const userData: User = {
-  //     uid: user.uid,
-  //     email: user.email,
-  //     displayName: user.displayName,
-  //     photoURL: user.photoURL,
-  //     emailVerified: user.emailVerified
-  //   }
-  //   return userRef.set(userData, {
-  //     merge: true
-  //   })
-  // }
-  //Firebase docs
+  
   
 }

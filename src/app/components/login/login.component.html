@@ -1,5 +1,4 @@
 <div class="form-container">
-    
     <form #LoginForm="ngForm" (ngSubmit)="onSubmit(LoginForm)">
         <h2 class="form-title">Log in</h2>
         <div class="form-group">
@@ -7,15 +6,13 @@
                 Email
             </label>
             <input class="text-input email-input" type="email" name="email" ngModel required >
-            <!--<span>El campo es obligatorio</span>-->
-    
         </div>
         <div class="form-group">
             <label for="password" class="label">
                 Password
             </label>
             <input class="text-input" type="password" name="password" ngModel required minlength="8"> 
-           <!--<span>El campo es obligatorio</span>-->
+           
     
         </div>
         <div class="form-group">
@@ -24,6 +21,6 @@
     </form>
     <button class="google-btn" (click)="_googleAuth.GoogleAuth()">Regístrate con Google</button>
     <button (click)="_googleAuth.signOut()">Log out</button>
-</div>
+</div> 
 
 
