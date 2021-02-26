@@ -1,5 +1,103 @@
 :host{
     display: flex;
+    height: 88vh;
+    background-color: rgb(64, 74, 83);
+    align-items: center;
+}
+
+.form-container{
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container__form{
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    width: 100%;
+}
+
+.form-group {
+    display:flex;
+    width: 80%;
+}
+
+.last-form-group {
+    margin-bottom: 0;
+}
+
+.text-input {   
+  font-size: 16px;
+  padding: 20px 0px;
+  height: 56px;
+  border: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  width: 280px;
+  box-sizing: border-box;
+  transition: all 0.3s linear;
+  color: #000;
+  font-weight: 400;
+  -webkit-appearance: none;
+}
+
+.text-input:focus {
+  border-bottom: solid 1px #b69de6;
+  outline: 0;
+  box-shadow: 0 2px 6px -8px rgba(182, 157, 230, 0.45);
+}
+
+.form-container__buttons-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding-left: 9%;
+}
+
+input[value='Sign up'] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  @media screen and (min-width:768px) {
+    .form-container__form{
+        background-color: white;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        width: 80%;
+    }
+  }
+
+  @media screen and (min-width:1024px) {
+    .form-container__form{
+        display:flex;
+        flex-direction: column;
+        width: 400px;
+        height: 400px;
+    }
+  }
+
+
+
+
+
+/* :host{
+    display: flex;
     height: 100vh;
     background-color: rgb(64, 74, 83);;
     align-items: center;
@@ -65,4 +163,4 @@
     input[type='submit']:hover{
         cursor: pointer;
     }
-    
+     */

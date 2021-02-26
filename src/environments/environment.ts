@@ -11,7 +11,8 @@ export const environment = {
     storageBucket: "contador-f724b.appspot.com",
     messagingSenderId: "162617481995",
     appId: "1:162617481995:web:934af4593633b4546da00e"
-  }
+  },
+  url:'http://localhost:4000/'
 };
 
 /*

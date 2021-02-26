@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from "../models/user";
 import firebase from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import "firebase/auth";
 import { Router } from "@angular/router";
 import { UserService } from './user.service';
@@ -33,10 +33,6 @@ export class GoogleAuthService {
       const tokenExpirationDate = new Date(
                new Date().getTime() + +resData.dataUser.expiresIn * 1000
           );
-
-          
-        console.log(typeof resData.dataUser.expiresIn, resData.dataUser.expiresIn)
-        console.log(typeof (resData.dataUser.expiresIn * 1000), resData.dataUser.expiresIn * 1000)
 
       const user = new User(
       resData.dataUser.id,

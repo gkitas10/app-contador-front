@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "../models/user";
-import { Global } from "./Global";
+import { environment } from '../../environments/environment';
 import { Observable, BehaviorSubject } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { throwError } from "rxjs";
@@ -16,7 +16,7 @@ export class UserService {
   private expTimer:any;
 
   constructor(private _http: HttpClient, private router: Router) {
-    this.url = Global.url;
+    this.url = environment.url;
   }
 
   signUp(

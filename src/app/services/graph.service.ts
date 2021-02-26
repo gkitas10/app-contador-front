@@ -3,14 +3,14 @@ import { Observable, BehaviorSubject } from "rxjs";
 import { UserService } from "./user.service";
 import { catchError, exhaustMap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
-import { Global } from "./Global";
 import { stringify } from 'querystring';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GraphService {
-  public url = Global.url;
+  public url = environment.url;
   public graphType = new BehaviorSubject<string>(null); 
 
   constructor(private _http: HttpClient, private _userService: UserService) { }

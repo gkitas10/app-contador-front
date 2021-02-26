@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { UserService } from "../../services/user.service";
+import { GoogleAuthService } from '../../services/google-auth.service';
 
 @Component({
   selector: "app-header",
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isLoggedIn: boolean = false;
   private userSub: Subscription;
 
-  constructor(private _userService: UserService) {}
+  constructor(private _userService: UserService, private _googleAuth:GoogleAuthService) {}
 
   ngOnInit() {
     this.userSub = this._userService.user.subscribe((user) => {
@@ -26,5 +27,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this._userService.logout();
+    this._googleAuth.signOut();
   }
 }

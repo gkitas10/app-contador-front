@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Global } from "./Global";
+import { environment } from '../../environments/environment';
 import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GraphicsService {
-   
-  public url=Global.url;
+  public url=environment.url;
   constructor(private _http:HttpClient) { }
 
   firstDataSetForGraphics(concept:string, month:string, year:number):Observable<any>{

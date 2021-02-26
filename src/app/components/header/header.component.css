@@ -8,10 +8,11 @@
 .navbar {
     display:flex;
     background-color: rgb(32,35,42);
-    height: 80px;
+    height: 12vh;
     width: 100%;
-    padding: 30px 5px;
+    padding-left: 5px;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .navbar__link-container {

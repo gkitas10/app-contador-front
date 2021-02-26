@@ -3,7 +3,7 @@ import { HttpClient, HttpParams, HttpErrorResponse } from "@angular/common/http"
 import {UserService} from './user.service';
 import { Observable,throwError} from "rxjs";
 import {exhaustMap,catchError} from 'rxjs/operators';
-import { Global } from "./Global";
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class TableService {
   public url: String;
 
   constructor(private _http: HttpClient, private _userService: UserService) {
-    this.url=Global.url;
+    this.url=environment.url;
    }
 
    saveIncome( concept:string, amount:number, month:string ):Observable<any>{

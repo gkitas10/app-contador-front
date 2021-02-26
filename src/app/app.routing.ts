@@ -17,7 +17,7 @@ const appRoutes:Routes=[
     {path:'income-statement', component:TableComponent, canActivate:[AuthguardService]},
     {path:'ticket', component:TicketComponent, canActivate:[AuthguardService]},
     {path:'graphics', component:GraphicsComponent, canActivate:[AuthguardService]},
-    {path:'other-graphics', component:ComparativeGraphicsComponent},
+    {path:'other-graphics', component:ComparativeGraphicsComponent, canActivate:[AuthguardService]},
     {path:'ticket-list', component:TicketListComponent, canActivate:[AuthguardService]},
     {path:'**', component:LoginComponent},
   

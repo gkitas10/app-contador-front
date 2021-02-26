@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { GoogleAuthService } from '../../services/google-auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,10 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public user:User;
   public status:string;
-  public LoggedIn:boolean=false;
+  public isLoggedIn:boolean;
   public token:string;
   public error:string;
+  public userSub:Subscription;
 
   constructor(
     private _userService:UserService,
@@ -24,7 +26,15 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userSub = this._userService.user.subscribe((user) => {
+      this.isLoggedIn = !user ? false : true;
+     
+    });
     
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 
   onSubmit(form:NgForm){

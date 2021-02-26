@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Global } from "./Global";
+import { environment } from '../../environments/environment';
 import { Ticket } from "../models/ticket";
 import { Observable, Subject} from "rxjs";
 import { catchError, exhaustMap } from "rxjs/operators";
@@ -20,7 +20,7 @@ export class TicketService {
   
 
   constructor(private _http: HttpClient, private _userService: UserService) {
-    this.url = Global.url;
+    this.url = environment.url;
   }
 
   saveTicket(

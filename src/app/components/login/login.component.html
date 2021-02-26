@@ -1,26 +1,22 @@
 <div class="form-container">
-    <form #LoginForm="ngForm" (ngSubmit)="onSubmit(LoginForm)">
+    <form #LoginForm="ngForm" class="form-container__form" (ngSubmit)="onSubmit(LoginForm)">
         <h2 class="form-title">Log in</h2>
         <div class="form-group">
-            <label for="email" class="label">
-                Email
-            </label>
-            <input class="text-input email-input" type="email" name="email" ngModel required >
+            <input class="text-input email-input" type="email" name="email" placeholder="Ingresa tu email" autocomplete="off" ngModel required >
         </div>
         <div class="form-group">
-            <label for="password" class="label">
-                Password
-            </label>
-            <input class="text-input" type="password" name="password" ngModel required minlength="8"> 
-           
-    
+            <input class="text-input" type="password" name="password" placeholder="Ingresa tu contraseña" autocomplete="off" ngModel required minlength="8"> 
         </div>
-        <div class="form-group">
+        <div class="form-group last-form-group">
             <input type="submit" value="Log in" [disabled]='!LoginForm.valid'>     
         </div>
+        <div class="form-container__buttons-container">
+            <div class="form-container__google-btn" (click)="_googleAuth.GoogleAuth()"></div>
+            <!--<button class="form-container__log-out-btn" (click)="_googleAuth.signOut()" *ngIf="isLoggedIn">Log out</button>-->
+        </div>
     </form>
-    <button class="google-btn" (click)="_googleAuth.GoogleAuth()">Regístrate con Google</button>
-    <button (click)="_googleAuth.signOut()">Log out</button>
+    
+    
 </div> 
 
 
