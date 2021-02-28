@@ -81,8 +81,6 @@ export class ComparativeGraphicsComponent implements OnInit {
       this.showMonthInput = true;
       this.showYearInput = false;
     }
-    console.log(form.value.month, 'year', form.value.year)
-    
     
     this._graphicsService.firstDataSetForGraphics(
       form.value.concept,

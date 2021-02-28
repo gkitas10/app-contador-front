@@ -2,44 +2,44 @@
     {{successMsg}}
 </div>
 <div class="form-container">
-    <h1>Ingresa tus tickets de compra</h1>
-    <form #TicketForm="ngForm" (ngSubmit)="onSubmit(TicketForm)">
+    <h1 class="form-title">Ingresa tus tickets de compra</h1>
+    <form #TicketForm="ngForm" (ngSubmit)="onSubmit(TicketForm)" class="form">
         <div class="form-group">
             <label class="label">Cantidad</label>
             <div class="input-asterisk-container">
-                <input type="text" name="amount" (blur)="onBlurAmount()" [(ngModel)]="amount" required>
+                <input class="form-control" type="text" name="amount" (blur)="onBlurAmount()" [(ngModel)]="amount" required>
                 <div class="asterisk" *ngIf='showAmountAst'>*</div>
             </div>
         </div>
         <div class="form-group">
             <label class="label">Categoría</label>
             <div class="input-asterisk-container">
-                <input type="text" name="concept" (blur)="onBlurConcept()" [(ngModel)]='concept' required>
+                <input class="form-control" type="text" name="concept" (blur)="onBlurConcept()" [(ngModel)]='concept' required>
                 <div class="asterisk" *ngIf='showConceptAst'>*</div>
             </div>
         </div>
         <div class="form-group">
             <label class="label">Producto</label>
             <div class="input-asterisk-container">
-                <input type="text" name="product" (blur)="onBlurProduct()" [(ngModel)]='product' required>
+                <input class="form-control" type="text" name="product" (blur)="onBlurProduct()" [(ngModel)]='product' required>
                 <div class="asterisk" *ngIf='showProductAst'>*</div>
             </div>
         </div>
         <div class="form-group">
             <label class="label">Proveedor o Tienda</label>
             <div class="input-asterisk-container">
-                <input type="text" name="provider" (blur)="onBlurProvider()" [(ngModel)]='provider' required>
+                <input class="form-control" type="text" name="provider" (blur)="onBlurProvider()" [(ngModel)]='provider' required>
                 <div class="asterisk" *ngIf='showProviderAst'>*</div>
             </div>
         </div>
         <div class="form-group">
             <label class="label" for="notes">Notas</label>
-            <textarea type="text" name="notes" ngModel></textarea>
+            <textarea class="form-control" type="text" name="notes" ngModel></textarea>
         </div>
         <div class="form-group">
             <label class="label">Fecha</label>
             <div class="input-asterisk-container">
-                <input type="date" name="date" (blur)="onBlurDate()" [(ngModel)]='date' required>
+                <input class="form-control" type="date" name="date" (blur)="onBlurDate()" [(ngModel)]='date' required>
                 <div class="asterisk" *ngIf='showDateAst'>*</div>
             </div>
         </div>

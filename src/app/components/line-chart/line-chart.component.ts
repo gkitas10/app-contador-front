@@ -84,14 +84,4 @@ export class LineChartComponent {
   changeGraphType(event:Event){
     this.graphType.emit((<HTMLDivElement>event.target).innerHTML)
   }
-
-  //Get the type of input to show for the second form
-  /*getInputWord(sentence:string){
-    const words = sentence.split(" ");
-    const lastWord = words[ words.length -1 ];
-
-    if( lastWord === 'mes' ) return 'date'
-    if( lastWord === 'año' ) return 'month'
-    if( lastWord === 'anualmente' ) return 'year'
-  }*/
 }

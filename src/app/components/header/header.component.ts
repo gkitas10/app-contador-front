@@ -11,6 +11,7 @@ import { GoogleAuthService } from '../../services/google-auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   public isLoggedIn: boolean = false;
   private userSub: Subscription;
+  public showModal:boolean = false;
 
   constructor(private _userService: UserService, private _googleAuth:GoogleAuthService) {}
 
@@ -23,6 +24,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.userSub.unsubscribe();
+  }
+
+  onTouchStart(event:Event){
+    console.log(event)
+    this.showModal = !this.showModal;
   }
 
   onLogout() {
