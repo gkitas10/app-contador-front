@@ -48,7 +48,7 @@ input::placeholder{
 
 .tickets-container{
     display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(min-content,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(min-content, 1fr));
     grid-template-rows: 300px 300px 300px 300px 150px;
     background-color: rgb(64, 74, 83);
     flex-grow: 1;

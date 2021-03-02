@@ -79,6 +79,14 @@ input[type='submit']{
         align-self: center;
     }
 }
+
+@media screen and (min-width:1024px){
+    :host{
+        
+        height: 120vh;
+    }
+}
+
 /* :host{
     display: flex;
     height: 100vh;
