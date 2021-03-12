@@ -1,5 +1,16 @@
+@font-face {
+    font-family: 'ubuntubold';
+    src: url('./assets/fonts/ubuntu-b-webfont.woff2') format('woff2'),
+         url('./assets/fonts/ubuntu-b-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body{
-    background: blueviolet;
+    
     margin:0;
 }
+
+
+
 

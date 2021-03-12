@@ -31,6 +31,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.showModal = !this.showModal;
   }
 
+  onClick(event:Event) {
+    console.log(event)
+    this.showModal = !this.showModal;
+  }
+
   onLogout() {
     this._userService.logout();
     this._googleAuth.signOut();
