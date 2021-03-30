@@ -1,40 +1,37 @@
 <div class="sidebar">
-    <div (click)="showCreatedDateForm()" *ngIf="!showCreatedDate">Buscar por fecha de creación del ticket</div>
+    
     <form #TicketListForm="ngForm" class="form" (ngSubmit)="onSubmit(TicketListForm)" *ngIf="!showCreatedDate">
         <div class="form-group">
-            <label>Categoría</label>
-            <input type="text" name="concept" placeholder="Escribe una categoría..." ngModel>
+            <input class="form-control" type="text" name="concept" placeholder="Categoría" ngModel>
         </div>
         <div class="form-group" >
-            <label>Producto o servicio</label>
-            <input type="text" name="product" placeholder="Escribe el producto o servicio..." ngModel>
+            <input class="form-control" type="text" name="product" placeholder="Producto o servicio" ngModel>
         </div>
         <div class="form-group">
-            <label>Proveedor o Tienda</label>
-            <input type="text" class="form__input" name="provider" placeholder="Escribe el proveedor o tienda..." ngModel>
+            <input class="form-control" type="text" name="provider" placeholder="Proveedor o tienda..." ngModel>
         </div>
         <div class="form-group">
-            <label>Fecha</label>
-            <input type="date" name="date" ngModel>
+            <input class="form-control" type="date" name="date" ngModel>
         </div>
         <div class="form-group last-form-group">
             <label>Mes</label>
-            <input type="month" name="month" ngModel>
+            <input class="form-control" type="month" name="month" ngModel>
         </div>
         <div class="form-group">
-            <input class="btn" type="submit" value="Enviar">
+            <input class="btn" type="submit" value="Enviar" (click)='scrollDown()'>
         </div>
     </form>
-    <form #CreatedDateForm="ngForm" *ngIf="showCreatedDate" (ngSubmit)="onSubmitCreatedDate(CreatedDateForm)">
-        <div (click)="hideCreatedDateForm()">Regresar</div>
+    <div class="showsecondform-btn" (click)="showCreatedDateForm()" *ngIf="!showCreatedDate">Buscar por fecha de creación del ticket</div>
+    <form class="second-form" #CreatedDateForm="ngForm" *ngIf="showCreatedDate" (ngSubmit)="onSubmitCreatedDate(CreatedDateForm)">
         <div class="form-group">
             <label>Fecha de creación</label>
-            <input type="date" name="created" ngModel>
+            <input type="date" class="form-control" name="created" ngModel>
         </div>
-        <input type="submit" value="Buscar">
+        <input class="btn" type="submit" value="Buscar" (click)='scrollDown()'>
+        <div class='back-btn' (click)="hideCreatedDateForm()">Regresar</div>
     </form>
 </div>
-<div class="tickets-container">
+<div class="tickets-container" #ticketsContainerDiv>
     <div class="error-msg error-msg__graph" 
     *ngIf="errorMsg">
         {{errorMsg}}
@@ -42,13 +39,16 @@
     <app-ticket-item
     *ngFor='let ticket of tickets; index as i'
     [ticket]='ticket'
+    [top]=top
     
     ></app-ticket-item>
     <div class="pages" *ngIf="tickets">
-        Se encontraron {{count}} resultados
-        <button *ngIf="from>=12" (click)=previousPage()>Página anterior</button>
-        <button *ngIf="count-from>12" (click)=nextPage()>Página siguiente</button>
-        <div>Página {{from/12+1}} de {{pages}}</div>
+        <h4>Se encontraron {{count}} resultados</h4>
+        <div class="pages-btn-cont">
+            <div>Página {{from/12+1}} de {{pages}}</div>
+            <button class="pages-btn" *ngIf="from>=12" (click)=previousPage()>Página anterior</button>
+            <button class="pages-btn" *ngIf="count-from>12" (click)=nextPage()>Página siguiente</button>
+        </div>
     </div>  
 </div>
 <app-modal *ngIf="showModal"

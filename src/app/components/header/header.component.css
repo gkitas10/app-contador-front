@@ -80,6 +80,12 @@ a:hover {
         height: 12vh;
     }
 }
+
+@media screen and (min-width:1024px) {
+    .navbar__modal{
+        right: 80%;
+    }
+}
 /* #navbar{
 
     background-color: rgb(32,35,42);

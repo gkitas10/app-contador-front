@@ -14,7 +14,7 @@
     <div class="prop-label">Fecha de compra:</div><div class="props"> {{ticket.date}}</div>
 </div>
 <div class="notes-link" (click)="showAnnotations()">Anotaciones</div>
-<div class="annotations" *ngIf="!hideAnnotations && ticket.notes !== '' ">
+<div class="annotations" *ngIf="!hideAnnotations && ticket.notes !== '' " (click)="showAnnotations()">
     {{ticket.notes}}
 </div>
 <div class="prop-container">

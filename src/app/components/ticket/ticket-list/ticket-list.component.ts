@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { TicketService } from "../../../services/ticket.service";
 import { Subscription } from 'rxjs';
@@ -20,10 +20,17 @@ export class TicketListComponent implements OnDestroy, OnInit{
   public form:NgForm;
   public errorMsg:string;
   public showCreatedDate:boolean;
+  @ViewChild('ticketsContainerDiv', {static:true}) ticketsContainerDiv:ElementRef;
+  public top:number;
 
   constructor(private _ticketService:TicketService) {
     
    }
+
+  scrollDown() {
+    let rect = this.ticketsContainerDiv.nativeElement.getBoundingClientRect();
+    this.top = rect.top;
+  } 
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
@@ -74,6 +81,7 @@ export class TicketListComponent implements OnDestroy, OnInit{
         this.tickets=res.ticketsDB;
         this.count=res.count;
         this.getPages();
+       
       },error=>{
         this.errorMsg = error.error.message;
       }
