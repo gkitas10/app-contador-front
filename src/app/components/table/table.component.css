@@ -1,4 +1,222 @@
-:host{
+ :host{
+    margin:1px solid black;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.sidebar {
+    background-color: rgb(40, 44, 52);
+    display: flex;
+    flex-direction: column;
+    padding-top:20px;
+    align-items: center;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;    
+}
+
+.label{
+    color:rgb(97, 218, 251);
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.input{
+    -webkit-appearance: none;
+    outline: none;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    height: 2.2rem;
+}
+
+.button{
+    background-color: rgb(26, 32, 45);
+    height: 2.5rem;
+    color:white;
+    border-radius: 4px;
+}
+
+.income-statement-container{
+    flex-grow: 1;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profit-and-loss-container{
+    display: flex;
+    background-color:#ecf0f3;
+    justify-content: space-around;
+    width: 90%;
+    padding:20px 10px;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+.profit-and-loss-container__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profit-and-loss-container__amount{
+
+    display: flex;
+}
+
+.table-container{
+    display:flex;
+    flex-direction: column;
+    width: 80%;
+    border-top: 1px solid #ecf0f3;
+    margin-top: 30px;
+ }
+
+ .income-table__container{
+     border-top: none;
+ }
+
+.table-container__row{
+    display:flex;
+    border-bottom: 1px solid #ecf0f3;
+    align-items: center;
+ }
+
+ .income-title__row{
+    border-bottom: 1px solid #ecf0f3;
+ }
+
+ .x-button__container{
+    display:flex;
+    border-bottom: 1px solid #ecf0f3;
+    border-top: none;
+ }
+
+ .x-button{
+    background-color: #ecf0f3;
+    padding: 4px;
+    cursor: pointer;
+    flex-basis: 30px;
+    text-align: center;
+}
+
+ .error-msg{
+    background-color: #BA372A;
+    color: white;
+    width: 80%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin-top: 30px;
+}
+
+.income-error-msg{
+    width: 100%;
+}
+
+.money-symbol{
+    display:inline-block;
+}
+
+.profit-and-loss-container__symbol{
+    display:flex;
+    align-items: center;
+}
+
+.concept{
+    width: 75%;
+    padding: 14px 10px;
+    font-family: Helvetica, Arial;
+    font-size: 1rem;
+ }
+
+ .expenditure{
+    cursor: pointer;
+ }
+
+ .total{
+    font-weight: bold;
+ }
+
+ .x-button__container{
+    display:flex;
+    border-bottom: 1px solid #ecf0f3;
+    border-top: none;
+ }
+
+ .delete-button{
+    display: flex;
+    background-color: #BA372A;
+    color: white;
+    border-radius: 2px;
+    flex-basis: 72px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.header{
+    font-weight: bold;
+    font-family: Helvetica;
+}
+
+.amount{
+    padding: 14px 10px;
+    flex-grow: 1;
+    text-align: right;
+    font-family: Helvetica, Arial;
+    font-size: 1rem;
+ }
+
+ @media screen and (min-width:1024px) {
+    :host {
+        margin:1px solid black;
+        flex-direction: row;
+        min-height: 100vh;
+    }
+
+    .sidebar {
+        width: 20%;
+        min-width: 222px;
+    }
+
+    .form {
+        padding-top: 0;
+    }
+
+    #form2{
+        margin-top: 40px;
+    }
+
+    .profit-and-loss-container__amount{
+        font-size:2rem; 
+    }
+
+    .money-symbol{
+        display:inline-block;
+    }
+
+    .income:hover{
+        cursor: pointer;
+    }
+
+    .delete-button:hover{
+        cursor: pointer;
+    }
+  }
+
+
+
+
+
+/* :host{
     margin:1px solid black;
     display: flex;
     min-height: 100vh;
@@ -190,9 +408,9 @@
 
  .total{
     font-weight: bold;
- }
+ } */
 
 
 
 
-
+ 

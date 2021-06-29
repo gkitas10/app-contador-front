@@ -1,4 +1,117 @@
-:host{
+ :host{
+    display:flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.error-msg{
+    background-color: #BA372A;
+    color: white;
+    width: 80%;
+    padding: 20px 15px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin-top: 30px;
+}
+
+.form-container{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(40, 44, 52);
+    min-height: 82vh;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control{
+    -webkit-appearance: none;
+    outline: none;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    height: 2.2rem;
+}
+
+.total{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.label{
+    color:rgb(97, 218, 251);
+}
+
+input[type='submit'] {
+    background-color: rgb(26, 32, 45);
+    height: 2.5rem;
+    color:white;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.graph-container{
+    flex-grow: 1;
+    display:flex;
+    flex-direction: column;
+}
+
+.graph-type-container{
+    display: flex;
+    background-color: #c8d6e5;
+    padding: 2px 5px;
+}
+
+.graph-type-button{
+    margin-left:5px;
+    margin-right: 5px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.graph-container__middot {
+    flex-grow: 1;
+    text-align: center;
+}
+
+@media screen and (min-width:1024px) {
+    :host {
+        flex-direction: row;
+    }
+
+    .form-container {
+        padding-top: 20px;
+        width: 20%;
+        min-width: 250px;
+        min-height: 88vh;
+    }
+
+    /* .graph-container{
+        flex-grow: 1;
+        display:flex;
+        flex-direction: column;
+    }*/
+
+    .graph-type-container{
+        display: flex;
+        cursor: pointer;
+        background-color: #c8d6e5;
+        padding: 2px 5px;
+        width: fit-content;
+    } 
+}
+
+
+
+
+
+/* :host{
     display:flex;
     width: 100%;
 }
@@ -84,4 +197,4 @@ input[type='submit']:hover{
     align-self: stretch;
     width: 90%;
     align-self: center;
-}
+} */

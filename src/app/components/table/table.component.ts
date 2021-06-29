@@ -53,6 +53,10 @@ export class TableComponent {
     this.incomeArray = res.data;
     this.totalIncome = this._tableService.getTotal( this.incomeArray );
     this.profit = this.totalIncome - this.totalExpenditure;
+    window.scroll({
+      top:500,
+      left:0
+    })
     }, error=>{
       this.incomeError = error.error.error;
     })

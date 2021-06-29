@@ -1,5 +1,9 @@
 <div class="form-container">
-    
+    <!-- <div class="error-msg" 
+        *ngIf="errorReq === 'No se encontraron tickets de gasto en este período'"
+    >
+        {{errorReq}}
+    </div> -->
     <form class="form1" #expensesForm="ngForm" (ngSubmit)="onSubmit(expensesForm)">
         <div class='form-group' *ngIf='!year'>
             <label class="label">Mes</label>
@@ -14,17 +18,18 @@
         </div>
         <div class="error" *ngIf="error">Es necesario llenar por lo menos un campo</div>
     </form>
+    <div class="total" *ngIf="total">Total: $ {{total}}</div>
 </div>
 <div class="graph-container">
     <div class="graph-type-container">
         <div (click)="changeGraphType($event)"
             class="graph-type-button"
         >Líneas</div>
-        <div>&middot;</div>
+        <div class='graph-container__middot'>&middot;</div>
         <div (click)="changeGraphType($event)"
             class="graph-type-button"
         >Pastel</div>
-        <div>&middot;</div>
+        <div class='graph-container__middot'>&middot;</div>
         <div (click)="changeGraphType($event)"
             class="graph-type-button"
         >Barras</div>

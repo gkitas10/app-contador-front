@@ -20,8 +20,9 @@
         <div class="form-group">
             <input class="btn" type="submit" value="Enviar" (click)='scrollDown()'>
         </div>
+        <div class="showsecondform-btn" (click)="showCreatedDateForm()" *ngIf="!showCreatedDate">Buscar por fecha de creación del ticket</div>
     </form>
-    <div class="showsecondform-btn" (click)="showCreatedDateForm()" *ngIf="!showCreatedDate">Buscar por fecha de creación del ticket</div>
+    
     <form class="second-form" #CreatedDateForm="ngForm" *ngIf="showCreatedDate" (ngSubmit)="onSubmitCreatedDate(CreatedDateForm)">
         <div class="form-group">
             <label>Fecha de creación</label>

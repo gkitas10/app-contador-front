@@ -1,5 +1,86 @@
 :host{
     display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sidebar{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(40, 44, 52);
+    min-height: 82vh; 
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.label{
+    color:rgb(97, 218, 251);
+}
+
+.form-control{
+    -webkit-appearance: none;
+    outline: none;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    height: 2.2rem;
+}
+
+input[type='submit'] {
+    background-color: rgb(26, 32, 45);
+    height: 2.5rem;
+    color:white;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.form2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.form2__header{
+    font-size: .8rem;
+    color: white;
+    align-self: flex-end;
+}
+
+@media screen and (min-width:1024px) {
+    :host {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        padding-top: 20px;
+        width: 20%;
+        min-width: 250px;
+        min-height: 88vh;
+    }
+
+    .graph-container {
+        flex-grow: 1;
+    }
+}
+
+/* .form-container{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(40, 44, 52);
+    min-height: 82vh;
+} */
+
+
+
+/* :host{
+    display:flex;
 }
 
 .sidebar{
@@ -65,4 +146,4 @@ input[type='submit']:hover{
     width: 90%;
     align-self: center;
 }
-
+ */

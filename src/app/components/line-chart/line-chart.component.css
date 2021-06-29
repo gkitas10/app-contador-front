@@ -1,4 +1,109 @@
-:host{
+ :host{
+    display:flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.error-msg{
+    background-color: #BA372A;
+    color: white;
+    width: 80%;
+    padding: 20px 15px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin-top: 10px;
+}
+
+
+.form-container{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(40, 44, 52);
+    min-height: 82vh;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.label{
+    color:rgb(97, 218, 251);
+}
+
+.total{
+    color: white;
+    font-size: 1.8rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input[type='submit'] {
+    background-color: rgb(26, 32, 45);
+    height: 2.5rem;
+    color:white;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.graph-type-container{
+    display: flex;
+    background-color: #c8d6e5;
+    padding: 4px 5px;
+    width: 100%;
+}
+
+.graph-type-button{
+    margin-left:5px;
+    margin-right: 5px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.graph-container__middot {
+    flex-grow: 1;
+    text-align: center;
+}
+
+@media screen and (min-width:1024px) {
+    :host {
+        flex-direction: row;
+    }
+
+    .form-container {
+        padding-top: 20px;
+        width: 20%;
+        min-width: 250px;
+        min-height: 88vh;
+    }
+
+    .graph-container{
+        flex-grow: 1;
+        display:flex;
+        flex-direction: column;
+    }
+
+    .graph-type-container{
+        display: flex;
+        cursor: pointer;
+        background-color: #c8d6e5;
+        padding: 2px 5px;
+        width: fit-content;
+    }
+
+     /* display: flex;
+    background-color: #c8d6e5;
+    padding: 4px 5px;
+    width: 100%; */
+}
+
+
+
+/* :host{
     display:flex;
     width: 100%;
 }
@@ -22,8 +127,7 @@
     flex-direction: column;
     align-items: center;
     background-color: rgb(40, 44, 52);
-    min-height: 100vh;
-    
+    min-height: 100vh; 
 }
 
 .form-group{
@@ -43,6 +147,8 @@
 .total{
     color: white;
     font-size: 1.5rem;
+    align-self: flex-start;
+    margin-left: 10px;
 }
 
 .label{
@@ -83,7 +189,7 @@ input[type='submit']:hover{
 .error-msg__graph{
     width: 90%;
     align-self: center;
-}
+} */
 
 
 

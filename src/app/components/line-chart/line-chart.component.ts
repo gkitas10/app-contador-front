@@ -27,7 +27,7 @@ export class LineChartComponent {
   public year:number;
   public error:boolean;
   public newARR:any[];
-  public showInput:String;
+  public showInput:string;
   @Output() graphType = new EventEmitter<string>();
   public errorReq:string;
   
@@ -69,6 +69,7 @@ export class LineChartComponent {
     form.value.month,
     form.value.year
     ).subscribe(res=>{
+      console.log(res)
       this.filteredArray=res.data[0];
       console.log(this.filteredArray)
       this.lineChartData = [ res.data[1][0] ];

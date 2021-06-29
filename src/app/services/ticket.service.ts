@@ -90,6 +90,13 @@ export class TicketService {
       total+=ticket.amount;
     })
     return total;
+  }
 
+  getTotalForPie(amounts:Array<number>){
+    const total = amounts.reduce((prev, curr) => (
+      prev + curr
+    ))
+
+    return total;
   }
 }

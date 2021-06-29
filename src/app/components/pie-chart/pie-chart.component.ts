@@ -4,6 +4,7 @@ import { ChartType, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { GraphService } from '../../services/graph.service';
+import { TicketService } from "../../services/ticket.service";
 
 @Component({
   selector: 'app-pie-chart',
@@ -16,6 +17,8 @@ export class PieChartComponent implements OnInit {
   public error:string;
   @Output() graphType = new EventEmitter<string>();
   public errorReq:string;
+  public total:number;
+  public filteredArray: any[];
   //
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -48,10 +51,16 @@ export class PieChartComponent implements OnInit {
     }
   ];
 
-  constructor(private _graphService:GraphService) { }
+  constructor(private _graphService:GraphService, private _ticketService: TicketService) { }
 
   ngOnInit(): void {
     console.log(this.month, this.year)
+  }
+
+  getTotal(){
+    let total:any = this._ticketService.getTotalForPie(this.pieChartData);
+    this.total = total;
+    
   }
 
   onSubmit(form:NgForm){
@@ -62,7 +71,7 @@ export class PieChartComponent implements OnInit {
       res => {
         this.pieChartLabels = res.data[0];
         this.pieChartData = res.data[1];
-        console.log(res)
+        this.getTotal();
       }, error => {
         console.log(error)
         this.errorReq = error.error.error;

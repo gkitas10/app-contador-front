@@ -20,6 +20,7 @@
      
     </form>
     <form class="form2" #secondForm="ngForm" (ngSubmit)="onSubmitSeconddataSet(secondForm)" *ngIf="showSecondForm">
+        <h3 class="form2__header">Gráfica comparativa</h3>
         <div class='form-group'>
             <label class="label">Categoría</label>
             <input  class="form-control" name="concept" type="text" ngModel>
