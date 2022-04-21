@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./ticket-list.component.css']
 })
 export class TicketListComponent implements OnDestroy, OnInit{
-  public tickets:Array<any>;
+  public tickets:any[] = [];
   public count=0;
   public from=0;
   public pages:number;
@@ -19,9 +19,11 @@ export class TicketListComponent implements OnDestroy, OnInit{
   public ticketToDelete:string;
   public form:NgForm;
   public errorMsg:string;
-  public showCreatedDate:boolean;
+  public CreatedDateForm:boolean = false;
+  public ticketsOnscreen:boolean = false;
   @ViewChild('ticketsContainerDiv', {static:true}) ticketsContainerDiv:ElementRef;
   public top:number;
+  public test:number = 1;
 
   constructor(private _ticketService:TicketService) {
     
@@ -38,6 +40,9 @@ export class TicketListComponent implements OnDestroy, OnInit{
   }
 
   ngOnInit(){
+    // this.ticketsOnscreen = this.tickets.length > 0 ? true : false; Cambiar a on submit
+    console.log(this.ticketsOnscreen)
+    console.log(this.tickets)
     this.subscription = this._ticketService.showModal.subscribe(res => {
     this.showModal = res.show;
     this.ticketToDelete = res.ticketid;
@@ -65,6 +70,7 @@ export class TicketListComponent implements OnDestroy, OnInit{
   }
 
   onSubmit(form:NgForm){
+    console.log(this.CreatedDateForm, this.ticketsOnscreen);
     this.errorMsg = undefined;
     this.tickets = undefined;
     this.form = form;
@@ -79,9 +85,12 @@ export class TicketListComponent implements OnDestroy, OnInit{
       ).subscribe(
       res=>{
         this.tickets=res.ticketsDB;
+        this.ticketsOnscreen = this.tickets.length > 0 ? true : false;
+        console.log(this.tickets);
+        
         this.count=res.count;
         this.getPages();
-       
+        
       },error=>{
         this.errorMsg = error.error.message;
       }
@@ -91,12 +100,15 @@ export class TicketListComponent implements OnDestroy, OnInit{
   onSubmitCreatedDate(form:NgForm){
     this.errorMsg = undefined;
     this.tickets = undefined;
+    this.form = form;
     const date = new Date(form.value.created.replace(/-/g, '\/')).toString();
     
     this._ticketService.getTicketItems(
       '','','','','', date, this.from
     ).subscribe(res=>{
+      console.log(this.form)
       this.tickets=res.ticketsDB;
+      this.ticketsOnscreen = this.tickets.length > 0 ? true : false;
       this.count=res.count;
       this.getPages();
     }
@@ -111,16 +123,34 @@ export class TicketListComponent implements OnDestroy, OnInit{
     this.getPages();
   }
 
-  nextPage(){
+  nextPage(CreatedDateForm){
+    console.log(this.CreatedDateForm, this.ticketsOnscreen);
+    
     this.from=this.from+12;
-    this.onSubmit(this.form);
-    this.getPages();
+    //this.onSubmit(this.form);
+    //this.getPages();
+    if(CreatedDateForm) {
+      console.log(this.form)
+      this.onSubmitCreatedDate(this.form)
+    }else {
+      this.onSubmit(this.form);
+      this.getPages();
+    }
+    
   }
 
-  previousPage(){
+  previousPage(CreatedDateForm){
     this.from=this.from - 12;
-    this.onSubmit(this.form);
-    this.getPages();
+    //this.onSubmit(this.form);
+    //this.getPages();
+
+    if(CreatedDateForm) {
+      console.log(this.form)
+      this.onSubmitCreatedDate(this.form)
+    }else {
+      this.onSubmit(this.form);
+      this.getPages();
+    }
   }
 
   getPages(){
@@ -133,10 +163,10 @@ export class TicketListComponent implements OnDestroy, OnInit{
   }
 
   showCreatedDateForm(){
-    this.showCreatedDate = true;
+    this.CreatedDateForm = true;
   }
 
   hideCreatedDateForm(){
-    this.showCreatedDate = false;
+    this.CreatedDateForm = false;
   }
 }

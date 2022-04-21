@@ -1,6 +1,5 @@
 :host {
     display: flex;
-    padding-top: 10px;
     flex-direction: column;
     padding-bottom: 10px;
 }
@@ -14,7 +13,7 @@
     text-align: center;
     font-size: 1rem;
     font-family: Helvetica, Arial, sans-serif;
-    margin-top: 30px;
+    
 }
 
 .form-container{
@@ -26,7 +25,7 @@
 
 .form-title {
     font-size: 2rem;
-    margin-left: 15px;
+    text-align: center;
     
 }
 
@@ -69,7 +68,6 @@ input[type='submit']{
 @media screen and (min-width:768px) {
     :host{
         background-color: rgb(64, 74, 83);
-        padding-top: 0;
         height: 88vh;
         justify-content: center;
     }
@@ -83,7 +81,6 @@ input[type='submit']{
 
 @media screen and (min-width:1024px){
     :host{
-        
         height: 120vh;
     }
 }

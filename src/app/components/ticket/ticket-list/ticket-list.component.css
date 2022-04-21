@@ -1,7 +1,8 @@
 :host{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 88vh;
+    /* height: 88vh; */
 }
 
 .sidebar {
@@ -9,6 +10,8 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 10px;
+    padding-top: 10px;
+    /* min-height: 88vh; */
 }
 
 .form-group{
@@ -19,7 +22,6 @@
 .form-control {   
     font-size: 16px;
     padding: 20px 0px;
-    height: 56px;
     border: none;
     border-bottom: solid 1px rgba(0, 0, 0, 0.1);
     background: #fff;
@@ -93,8 +95,22 @@
 }
 
 @media screen and (min-width:768px) {
+    .sidebar {
+        background-color: rgb(40, 44, 52);
+        /* min-height: 88vh; */
+        padding: 0;
+    }
+
     .form {
         padding-top: 100px;
+    }
+
+    .label {
+        color:rgb(97, 218, 251);
+    }
+
+    .btn {
+        border: 1px solid white;
     }
 }
 
@@ -104,12 +120,33 @@
     }
 
     .sidebar {
-        
         align-items: center;
+        padding-top: 20px;
+        min-width: 20%;
     }
 
     .form {
         padding-top: 0;
+        width: 90%;
+    }
+
+    .showsecondform-btn {
+        cursor: pointer;
+    }
+
+    .tickets-container {
+        display:grid;
+        grid-template-columns: repeat(auto-fit,minmax(min-content, 1fr));
+        grid-template-rows: 300px 300px 300px 300px;
+        background-color: rgb(64, 74, 83); 
+        flex-grow: 1;
+        grid-auto-flow:column; 
+    } 
+
+    .pages{
+        grid-column: 1/4;
+        grid-row:5/6;
+     
     }
   }
 

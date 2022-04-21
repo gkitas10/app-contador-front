@@ -45,6 +45,11 @@ export class TicketComponent implements OnInit {
         this.successMsg = res.message;
         const date = new Date(res.ticketDB.created)
         console.log(date)
+        window.scroll({
+          top:0,
+          left:0
+        })
+
         setTimeout(()=>{
           this.successMsg = undefined;
         }, 3000)

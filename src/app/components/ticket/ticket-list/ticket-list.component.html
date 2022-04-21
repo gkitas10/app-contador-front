@@ -1,6 +1,5 @@
 <div class="sidebar">
-    
-    <form #TicketListForm="ngForm" class="form" (ngSubmit)="onSubmit(TicketListForm)" *ngIf="!showCreatedDate">
+    <form #TicketListForm="ngForm" class="form" (ngSubmit)="onSubmit(TicketListForm)" *ngIf="!CreatedDateForm">
         <div class="form-group">
             <input class="form-control" type="text" name="concept" placeholder="Categoría" ngModel>
         </div>
@@ -11,24 +10,27 @@
             <input class="form-control" type="text" name="provider" placeholder="Proveedor o tienda..." ngModel>
         </div>
         <div class="form-group">
+            <label class="label">Fecha</label>
             <input class="form-control" type="date" name="date" ngModel>
         </div>
         <div class="form-group last-form-group">
-            <label>Mes</label>
+            <label class="label">Mes</label>
             <input class="form-control" type="month" name="month" ngModel>
         </div>
         <div class="form-group">
             <input class="btn" type="submit" value="Enviar" (click)='scrollDown()'>
         </div>
-        <div class="showsecondform-btn" (click)="showCreatedDateForm()" *ngIf="!showCreatedDate">Buscar por fecha de creación del ticket</div>
+        <div class="showsecondform-btn" (click)="showCreatedDateForm()" *ngIf="!CreatedDateForm">Buscar por fecha de creación del ticket</div>
     </form>
     
-    <form class="second-form" #CreatedDateForm="ngForm" *ngIf="showCreatedDate" (ngSubmit)="onSubmitCreatedDate(CreatedDateForm)">
+    <form class="second-form" #CreatedDateForm="ngForm" *ngIf="CreatedDateForm" (ngSubmit)="onSubmitCreatedDate(CreatedDateForm)">
         <div class="form-group">
-            <label>Fecha de creación</label>
+            <label class="label">Fecha de creación</label>
             <input type="date" class="form-control" name="created" ngModel>
         </div>
-        <input class="btn" type="submit" value="Buscar" (click)='scrollDown()'>
+        <div class="form-group">
+            <input class="btn" type="submit" value="Buscar" (click)='scrollDown()'>
+        </div>
         <div class='back-btn' (click)="hideCreatedDateForm()">Regresar</div>
     </form>
 </div>
@@ -43,15 +45,72 @@
     [top]=top
     
     ></app-ticket-item>
-    <div class="pages" *ngIf="tickets">
+     <!-- <div class="pages" *ngIf="tickets">
+        <h2>tickets && !CreatedDateForm</h2>
         <h4>Se encontraron {{count}} resultados</h4>
         <div class="pages-btn-cont">
             <div>Página {{from/12+1}} de {{pages}}</div>
             <button class="pages-btn" *ngIf="from>=12" (click)=previousPage()>Página anterior</button>
-            <button class="pages-btn" *ngIf="count-from>12" (click)=nextPage()>Página siguiente</button>
+            <button class="pages-btn" *ngIf="count-from>12" (click)=nextPage(CreatedDateForm)>Página siguiente</button>
+        </div>
+    </div> -->
+    <!-- arreglar -->
+    <!-- !CreatedDateForm && tickets" -->
+
+    <div class="pages" *ngIf="!CreatedDateForm && ticketsOnscreen">
+        <h4>Se encontraron {{count}} resultados</h4>
+        <div class="pages-btn-cont">
+            <div>Página {{from/12+1}} de {{pages}}</div>
+            <button class="pages-btn" *ngIf="from>=12" (click)=previousPage(CreatedDateForm)>Página anterior</button>
+            <button class="pages-btn" *ngIf="count-from>12" (click)=nextPage(CreatedDateForm)>Página siguiente</button>
         </div>
     </div>  
+
+    <!-- CreatedDateForm && tickets" -->
+
+    <div class="pages" *ngIf="CreatedDateForm && ticketsOnscreen"> 
+        <h2>else</h2>
+        <h4>Se encontraron {{count}} resultados</h4>
+        <div class="pages-btn-cont">
+            <div>Página {{from/12+1}} de {{pages}}</div>
+            <button class="pages-btn" *ngIf="from>=12" (click)=previousPage(CreatedDateForm)>Página anterior</button>
+            <button class="pages-btn" *ngIf="count-from>12" (click)=nextPage(CreatedDateForm)>Página siguiente</button>
+        </div>
+    </div> 
+
 </div>
+<!-- <div class="pages" *ngIf="tickets">
+        <h2>tickets && !CreatedDateForm</h2>
+        <h4>Se encontraron {{count}} resultados</h4>
+        <div class="pages-btn-cont">
+            <div>Página {{from/12+1}} de {{pages}}</div>
+            <button class="pages-btn" *ngIf="from>=12" (click)=previousPage()>Página anterior</button>
+            <button class="pages-btn" *ngIf="count-from>12" (click)=nextPage(CreatedDateForm)>Página siguiente</button>
+        </div>
+    </div> -->
+    <!-- arreglar -->
+    <!-- !CreatedDateForm && tickets" -->
+
+     <!-- <div class="pages" *ngIf="!CreatedDateForm">
+        <h4>Se encontraron {{count}} resultados</h4>
+        <div class="pages-btn-cont">
+            <div>Página {{from/12+1}} de {{pages}}</div>
+            <button class="pages-btn" *ngIf="from>=12" (click)=previousPage(CreatedDateForm)>Página anterior</button>
+            <button class="pages-btn" *ngIf="count-from>12" (click)=nextPage(CreatedDateForm)>Página siguiente</button>
+        </div>
+    </div>   
+
+     CreatedDateForm && tickets" -->
+
+     <!-- <div class="pages" *ngIf="CreatedDateForm"> 
+        <h2>else</h2>
+        <h4>Se encontraron {{count}} resultados</h4>
+        <div class="pages-btn-cont">
+            <div>Página {{from/12+1}} de {{pages}}</div>
+            <button class="pages-btn" *ngIf="from>=12" (click)=previousPage(CreatedDateForm)>Página anterior</button>
+            <button class="pages-btn" *ngIf="count-from>12" (click)=nextPage(CreatedDateForm)>Página siguiente</button>
+        </div>
+    </div>   --> 
 <app-modal *ngIf="showModal"
     [ticket]='ticketToDelete'
 ></app-modal>
