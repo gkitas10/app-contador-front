@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { User } from '../../models/user';
 import {NgForm} from '@angular/forms';
 import { UserService } from '../../services/user.service';
@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.userSub = this._userService.user.subscribe((user) => {
       this.isLoggedIn = !user ? false : true;
-     
+      console.log(isDevMode());
+       
     });
     
   }
