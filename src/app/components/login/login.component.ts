@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.userSub = this._userService.user.subscribe((user) => {
       this.isLoggedIn = !user ? false : true;
-      console.log(isDevMode());
-       
     });
     
   }
