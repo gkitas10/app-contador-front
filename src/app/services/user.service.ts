@@ -1,8 +1,7 @@
-import { Injectable, isDevMode } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "../models/user";
 import { environment } from '../../environments/environment';
-import { environmentProd} from "src/environments/environment.prod";
 import { Observable, BehaviorSubject } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { throwError } from "rxjs";
@@ -17,8 +16,7 @@ export class UserService {
   private expTimer:any;
 
   constructor(private _http: HttpClient, private router: Router) {
-
-    this.url = isDevMode() ? environment.url : environmentProd.url;
+    this.url = environment.url;
   }
 
   signUp(
