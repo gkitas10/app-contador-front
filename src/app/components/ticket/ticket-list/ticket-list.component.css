@@ -94,15 +94,26 @@
     margin-left: 40px;
 }
 
+@media screen and (min-width:580px) {
+    .sidebar {
+        padding-top: 1.5em;
+    }
+
+    .form {
+        width: 80%;
+    }
+}
+
 @media screen and (min-width:768px) {
     .sidebar {
         background-color: rgb(40, 44, 52);
-        /* min-height: 88vh; */
+        min-height: 90vh;
         padding: 0;
     }
 
     .form {
-        padding-top: 100px;
+        padding-top: 4em;
+        width: 60%;
     }
 
     .label {
@@ -111,6 +122,11 @@
 
     .btn {
         border: 1px solid white;
+    }
+
+    .second-form {
+        padding-top: 4em;
+        width: 60%;
     }
 }
 
@@ -121,13 +137,13 @@
 
     .sidebar {
         align-items: center;
-        padding-top: 20px;
-        min-width: 20%;
+        padding-top: 0;
+        width: 25%;
     }
 
     .form {
-        padding-top: 0;
         width: 90%;
+        padding-top: 1.25em;
     }
 
     .showsecondform-btn {
@@ -147,6 +163,17 @@
         grid-column: 1/4;
         grid-row:5/6;
      
+    }
+
+    .second-form {
+        width: 90%;
+        padding-top:0;
+    }
+  }
+
+  @media screen and (min-width:1024px) {
+    .sidebar {
+        width: 20%;
     }
   }
 
