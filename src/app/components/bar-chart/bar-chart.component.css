@@ -132,6 +132,16 @@ input[type='submit'] {
     }
 }
 
+@media screen and (min-width:1224px) {
+    canvas {
+        margin-top:0;
+    }
+
+    .graph-container{
+        padding-bottom: 2em;
+    }
+}
+
 
 
 
