@@ -13,6 +13,10 @@
     align-items: center;
 }
 
+.form {
+    width: 90%;
+}
+
 .form-group{
     display: flex;
     flex-direction: column;    
@@ -21,6 +25,12 @@
 .label{
     color:rgb(97, 218, 251);
     font-family: Helvetica, Arial, sans-serif;
+    
+}
+
+.label.title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
 }
 
 .input{
@@ -70,7 +80,7 @@
 .table-container{
     display:flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     border-top: 1px solid #ecf0f3;
     margin-top: 30px;
  }
@@ -87,12 +97,14 @@
 
  .income-title__row{
     border-bottom: 1px solid #ecf0f3;
+    padding-left: .625em;
  }
 
  .x-button__container{
     display:flex;
     border-bottom: 1px solid #ecf0f3;
     border-top: none;
+    
  }
 
  .x-button{
@@ -130,26 +142,26 @@
 
 .concept{
     width: 75%;
-    padding: 14px 10px;
+    padding: .875em .625em;
     font-family: Helvetica, Arial;
     font-size: 1rem;
  }
 
- .expenditure{
+.expenditure{
     cursor: pointer;
  }
 
- .total{
+.total{
     font-weight: bold;
  }
 
- .x-button__container{
+.x-button__container{
     display:flex;
     border-bottom: 1px solid #ecf0f3;
     border-top: none;
  }
 
- .delete-button{
+.delete-button{
     display: flex;
     background-color: #BA372A;
     color: white;
@@ -175,7 +187,7 @@
     font-size: 1rem;
  }
 
- @media screen and (min-width:1024px) {
+@media screen and (min-width:1024px) {
     :host {
         margin:1px solid black;
         flex-direction: row;
@@ -210,8 +222,13 @@
     .delete-button:hover{
         cursor: pointer;
     }
-  }
+}
 
+@media screen and (min-width:1024px) {
+    .income-table__container{
+        padding-bottom: 1em;
+    }
+}
 
 
 
