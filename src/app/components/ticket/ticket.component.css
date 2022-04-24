@@ -21,12 +21,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: .5em;
 }
 
 .form-title {
-    font-size: 2rem;
-    text-align: center;
-    
+    font-size: 1.5rem;
+    align-self: flex-start;
+    width: 95%;
+    margin-left: 5%;
+    /* text-align: center; */
+    padding-left: 0;
+    margin-bottom: 1em;
 }
 
 .form {
@@ -59,20 +64,6 @@ input[type='submit']{
     border-radius: .25rem;
 }
 
-@media screen and (min-width:320px) {
-    .form-container{
-        padding-top: 1em;
-    }
-
-    .form-title {
-        font-size: 1.5rem;
-        margin-bottom: 1em;
-        padding-left: .2em;
-        padding-right: .2em;
-    }
-
-}
-
 @media screen and (min-width:580px) {
     input[type='submit']{
         margin-bottom: 20px;
@@ -86,20 +77,65 @@ input[type='submit']{
 @media screen and (min-width:768px) {
     :host{
         background-color: rgb(64, 74, 83);
-        height: 88vh;
+        height: 90vh;
         justify-content: center;
     }
 
     .form-container {
         background-color: white;
-        width: 400px;
         align-self: center;
     }
 }
 
 @media screen and (min-width:1024px){
     :host{
-        height: 120vh;
+        min-height: 120vh;
+    }
+}
+
+@media screen and (min-width:1224px){
+    :host{
+        justify-content: center;
+        min-height: 90vh;
+    }
+
+    .form-container {
+        width:40%;
+        padding-top: 1em;
+    }
+
+    .form-title {
+        align-self: flex-start;
+        margin-left: 2.5%;
+    }
+
+    .form {
+        align-items: center;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 95%;
+    }
+
+    .form-group .label {
+        width: 50%;
+    }
+
+    .input-asterisk-container {
+        flex-grow: 1;
+    }
+
+    .text-area {
+        width: 50%;
+    }
+
+    input[type='submit']{
+        width: 40%;
+        margin-left: 2.5%;
+        align-self: flex-start;
     }
 }
 
