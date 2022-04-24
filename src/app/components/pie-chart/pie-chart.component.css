@@ -34,6 +34,10 @@
     flex-direction: column;
 }
 
+.submit-btn-container {
+    margin-bottom: 0;
+}
+
 .label{
     color:rgb(97, 218, 251);
 }
@@ -58,6 +62,9 @@ input[type='submit'] {
 .total{
     color: white;
     font-size: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
 .graph-type-container{
