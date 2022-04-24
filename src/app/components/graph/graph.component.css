@@ -1,10 +1,11 @@
-:host{
+/* :host{
     display:flex;
     width: 95%;
-   
-}
+    
+}*/
 
-canvas{
-    height: 570px;
-}
+/* canvas{
+    height: 400px;
+    width: 400px;
+} */
 
