@@ -81,6 +81,10 @@ input[type='submit']{
         justify-content: center;
     }
 
+    .success-msg {
+        margin-bottom: 0;
+    }
+
     .form-container {
         background-color: white;
         align-self: center;
@@ -97,6 +101,11 @@ input[type='submit']{
     :host{
         justify-content: center;
         min-height: 90vh;
+        align-items: center;
+    }
+
+    .success-msg {
+        width: 40%;
     }
 
     .form-container {
