@@ -4,15 +4,16 @@
         <rect y="30" width="100" height="20"></rect>
         <rect y="60" width="100" height="20"></rect>
     </svg>
-    
-    <!-- <div routerLinkActive="active" class="navbar__link-container" *ngIf="!isLoggedIn"><a [routerLink]="['login']">Log in</a></div>
-    <div routerLinkActive="active" class="navbar__link-container" *ngIf="!isLoggedIn"><a [routerLink]="['signup']">Sign up</a></div>
-    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['ticket']">Nuevo Ticket</a></div>
-    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['ticket-list']">Listado de tickets</a></div>
-    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']">Estado de resultados</a></div>
-    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['graphics']" >Gráficas</a></div>
-    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['other-graphics']" >Gráficas comparativas</a></div>
-    <div *ngIf="isLoggedIn" class="navbar__link-container navbar__logout-container"><a (click)="onLogout()">Log out</a></div> -->
+    <div class="desktop-menu">
+        <div routerLinkActive="active" class="navbar__link-container" *ngIf="!isLoggedIn"><a [routerLink]="['login']">Log in</a></div>
+        <div routerLinkActive="active" class="navbar__link-container" *ngIf="!isLoggedIn"><a [routerLink]="['signup']">Sign up</a></div>
+        <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['ticket']">Nuevo Ticket</a></div>
+        <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['ticket-list']">Listado de tickets</a></div>
+        <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']">Estado de resultados</a></div>
+        <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['graphics']" >Gráficas</a></div>
+        <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['other-graphics']" >Gráficas comparativas</a></div>
+        <div *ngIf="isLoggedIn" class="navbar__link-container navbar__logout-container"><a (click)="onLogout()">Log out</a></div>
+    </div>
       
 </nav>
  <div class="navbar__modal-back" *ngIf='showModal' (touchstart)=onTouchStart($event) (click)=onClick($event)></div>
