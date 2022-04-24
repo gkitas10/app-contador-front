@@ -25,6 +25,10 @@
     min-height: 82vh;    
 }
 
+.form1 {
+    width: 90%;
+}
+
 .form-group{
     display: flex;
     flex-direction: column;
@@ -74,6 +78,16 @@ input[type='submit'] {
     text-align: center;
 }
 
+@media screen and (min-width:768px) {
+    .form-container {
+        min-height: 90vh;
+    }  
+
+    .form1 {
+        width: 80%;
+    }
+}
+
 @media screen and (min-width:1024px) {
     :host {
         flex-direction: row;
@@ -83,7 +97,7 @@ input[type='submit'] {
         padding-top: 20px;
         width: 20%;
         min-width: 250px;
-        min-height: 88vh;
+        min-height: 90vh;
     }
 
     .graph-container{
@@ -98,6 +112,20 @@ input[type='submit'] {
         background-color: #c8d6e5;
         padding: 2px 5px;
         width: fit-content;
+    }
+
+    canvas {
+        margin-top: 4em;
+    }
+}
+
+@media screen and (min-width:1224px) {
+    canvas {
+        margin-top: 0;
+    }
+
+    .graph-container{
+        padding-bottom: 2em;
     }
 }
 
