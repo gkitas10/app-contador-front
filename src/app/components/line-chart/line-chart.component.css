@@ -35,6 +35,10 @@
     flex-direction: column;
 }
 
+.submit-btn-container {
+    margin-bottom: 0;
+}
+
 .label{
     color:rgb(97, 218, 251);
 }
@@ -42,8 +46,9 @@
 .total{
     color: white;
     font-size: 1.8rem;
-    margin-top: 2em;
-    margin-bottom: 10px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
 input[type='submit'] {
