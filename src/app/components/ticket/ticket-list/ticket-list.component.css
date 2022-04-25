@@ -14,6 +14,10 @@
     /* min-height: 88vh; */
 }
 
+.form {
+    width: 90%;
+}
+
 .form-group{
     display: flex;
     flex-direction: column;
@@ -73,10 +77,31 @@
     justify-content: center;
 }
 
+.tickets-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2em;
+    justify-content: flex-start;
+}
+
+.error-msg{
+    background-color: #BA372A;
+    color: white;
+    width: 90%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin-bottom: 2em;
+}
+
 .pages {
     background-color: rgba(32,35,42,.9);
     color:white;
     padding:10px 10px;
+    width: 100%;
 }
 
 .pages-btn-cont {
@@ -102,6 +127,10 @@
     .form {
         width: 80%;
     }
+
+    .error-msg{
+        width: 80%;
+    }
 }
 
 @media screen and (min-width:768px) {
@@ -113,7 +142,7 @@
 
     .form {
         padding-top: 4em;
-        width: 60%;
+        
     }
 
     .label {
