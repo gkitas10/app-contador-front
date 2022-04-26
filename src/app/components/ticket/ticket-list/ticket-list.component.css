@@ -211,20 +211,19 @@
   }
 
   @media screen and (min-width:1224px) {
-
-    /* .tickets-container {
-        display:grid;
-        grid-template-columns: repeat(auto-fit,minmax(min-content, 1fr));
-        background-color: rgb(64, 74, 83); 
-        flex-grow: 1;
-        grid-auto-flow:column; 
-    }  */
-
     .sidebar {
         width: 25%;
     }
 
-    
+    .tickets-container {
+        background-color: rgb(64, 74, 83);
+    }
+
+    .tickets-container__grid {
+        display:grid;
+        grid-template-columns: repeat(3,1fr);
+        width: 100%;
+    }
   }
 
 
