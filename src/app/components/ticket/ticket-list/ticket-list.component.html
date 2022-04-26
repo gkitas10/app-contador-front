@@ -39,12 +39,14 @@
     *ngIf="errorMsg">
         {{errorMsg}}
     </div>
-    <app-ticket-item
-    *ngFor='let ticket of tickets; index as i'
-    [ticket]='ticket'
-    [top]=top
+    <div class="tickets-container__grid">
+        <app-ticket-item
+        *ngFor='let ticket of tickets; index as i'
+        [ticket]='ticket'
+        [top]=top
+        ></app-ticket-item>
+    </div>
     
-    ></app-ticket-item>
      <!-- <div class="pages" *ngIf="tickets">
         <h2>tickets && !CreatedDateForm</h2>
         <h4>Se encontraron {{count}} resultados</h4>

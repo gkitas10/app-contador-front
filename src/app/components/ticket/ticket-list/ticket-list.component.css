@@ -97,6 +97,12 @@
     margin-bottom: 2em;
 }
 
+.tickets-container__grid {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
 .pages {
     background-color: rgba(32,35,42,.9);
     color:white;
@@ -129,6 +135,10 @@
     }
 
     .error-msg{
+        width: 80%;
+    }
+
+    .tickets-container__grid {
         width: 80%;
     }
 }
@@ -181,6 +191,11 @@
 
     .tickets-container {
         width: 100%;
+        flex-grow: 1;
+    }
+
+    .tickets-container__grid {
+        flex-grow: 1;
     }
 
     .pages{
@@ -197,13 +212,13 @@
 
   @media screen and (min-width:1224px) {
 
-    .tickets-container {
+    /* .tickets-container {
         display:grid;
         grid-template-columns: repeat(auto-fit,minmax(min-content, 1fr));
         background-color: rgb(64, 74, 83); 
         flex-grow: 1;
         grid-auto-flow:column; 
-    } 
+    }  */
 
     .sidebar {
         width: 25%;
