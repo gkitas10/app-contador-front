@@ -84,6 +84,8 @@
 @media screen and (min-width:1224px) {
     :host{
         background-color:white;
+        margin-left: 1em;
+        margin-right: 1em;
     } 
   }
 
