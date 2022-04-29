@@ -55,7 +55,7 @@ export class TicketComponent implements OnInit {
         }, 3000)
         
     },
-    error=>{console.log(error);
+    error=>{
       this.errorMsg = error.error.message;
     }
   );
