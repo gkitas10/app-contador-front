@@ -25,6 +25,7 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ModalComponent } from './components/modal/modal.component';
     LineChartComponent,
     PieChartComponent,
     BarChartComponent,
-    ModalComponent
+    ModalComponent,
+    TutorialComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

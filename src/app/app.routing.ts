@@ -9,6 +9,7 @@ import {AuthguardService} from './services/auth.guard.service';
 import { TableComponent } from './components/table/table.component';
 import {TicketListComponent} from './components/ticket/ticket-list/ticket-list.component';
 import { ComparativeGraphicsComponent } from './components/comparative-graphics/comparative-graphics.component';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
 
 const appRoutes:Routes=[
     {path:'',redirectTo:'login',pathMatch:'full'},
@@ -19,6 +20,7 @@ const appRoutes:Routes=[
     {path:'graphics', component:GraphicsComponent, canActivate:[AuthguardService]},
     {path:'other-graphics', component:ComparativeGraphicsComponent, canActivate:[AuthguardService]},
     {path:'ticket-list', component:TicketListComponent, canActivate:[AuthguardService]},
+    {path:'tutorial', component:TutorialComponent },
     {path:'**', component:LoginComponent},
   
 ];

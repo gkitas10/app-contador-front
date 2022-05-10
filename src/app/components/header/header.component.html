@@ -12,6 +12,7 @@
         <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']">Estado de resultados</a></div>
         <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['graphics']" >Gráficas</a></div>
         <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['other-graphics']" >Gráficas comparativas</a></div>
+        <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['tutorial']" >Tutorial</a></div>
         <div *ngIf="isLoggedIn" class="navbar__link-container navbar__logout-container"><a (click)="onLogout()">Log out</a></div>
     </div>
       
@@ -25,6 +26,7 @@
     <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['income-statement']">Estado de resultados</a></div>
     <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['graphics']" >Gráficas</a></div>
     <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['other-graphics']" >Gráficas comparativas</a></div>
+    <div routerLinkActive="active" class="navbar__link-container" *ngIf="isLoggedIn"><a [routerLink]="['tutorial']" >Tutorial</a></div>
     <div *ngIf="isLoggedIn" class="navbar__link-container navbar__logout-container" (click)="onLogout()"><a>Log out</a></div>
 </div> 
 
