@@ -191,7 +191,7 @@
     :host {
         margin:1px solid black;
         flex-direction: row;
-        min-height: 100vh;
+        min-height: 90vh;
     }
 
     .sidebar {
