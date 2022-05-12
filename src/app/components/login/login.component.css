@@ -110,6 +110,12 @@ input[value='Log in'] {
     }
   }
 
+@media screen and (min-width:1024px) {
+    :host {
+        height: 90vh;
+    }
+}
+
 /* :host{
     display: flex;
     height: 100vh;
